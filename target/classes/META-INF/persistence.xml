@@ -4,12 +4,12 @@
 	version="2.0">
 	
 	<persistence-unit name="DoksAppDB"
-		transaction-type="JTA">
+		transaction-type="RESOURCE_LOCAL">
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
 			<property name="javax.persistence.jdbc.user" value="Admin" />
 			<property name="javax.persistence.jdbc.password" value="admin1" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/DoksAppDB" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/DoksAppDB?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect" />
 			<property name="hibernate.hbm2ddl.auto" value="create-drop"/>
 		</properties>
