@@ -1,3 +1,34 @@
-[ERROR] 2020-02-20 14:22:43.717 [http-nio-8081-exec-3] Servlet - Logger is OK
-[ERROR] 2020-02-20 14:25:50.918 [http-nio-8081-exec-3] Servlet - Logger is OK
-[ERROR] 2020-02-20 14:27:06.731 [http-nio-8081-exec-3] Servlet - Logger is OK
+[INFO ] 2020-02-20 16:42:07.496 [http-nio-8081-exec-3] Servlet - Logger is OK
+[INFO ] 2020-02-20 16:42:07.500 [http-nio-8081-exec-3] Servlet - Given action: CreateProject
+[INFO ] 2020-02-20 16:54:04.229 [http-nio-8081-exec-3] Servlet - Incoming Get Request
+[INFO ] 2020-02-20 16:54:04.234 [http-nio-8081-exec-3] Servlet - Given action: CreateProject
+[INFO ] 2020-02-20 17:30:57.114 [http-nio-8081-exec-4] Servlet - Incoming Get Request
+[INFO ] 2020-02-20 17:30:57.120 [http-nio-8081-exec-4] Servlet - Given action: null
+[INFO ] 2020-02-20 17:30:57.120 [http-nio-8081-exec-4] Servlet - Didn't find action
+[INFO ] 2020-02-20 17:34:16.850 [http-nio-8081-exec-6] Servlet - Incoming Get Request
+[INFO ] 2020-02-20 17:34:16.857 [http-nio-8081-exec-6] Servlet - Given action: null
+[INFO ] 2020-02-20 17:34:16.863 [http-nio-8081-exec-6] Servlet - Didn't find action
+[INFO ] 2020-02-20 17:35:07.679 [http-nio-8081-exec-8] Servlet - Incoming Get Request
+[INFO ] 2020-02-20 17:35:07.680 [http-nio-8081-exec-8] Servlet - Given action: null
+[INFO ] 2020-02-20 17:35:07.680 [http-nio-8081-exec-8] Servlet - Didn't find action
+[INFO ] 2020-02-20 17:35:11.389 [http-nio-8081-exec-9] Servlet - Incoming Get Request
+[INFO ] 2020-02-20 17:35:11.389 [http-nio-8081-exec-9] Servlet - Given action: null
+[INFO ] 2020-02-20 17:35:11.389 [http-nio-8081-exec-9] Servlet - Didn't find action
+[INFO ] 2020-02-20 17:39:08.463 [http-nio-8081-exec-2] Servlet - Incoming Get Request
+[INFO ] 2020-02-20 17:39:08.469 [http-nio-8081-exec-2] Servlet - Given action: Register
+[INFO ] 2020-02-20 17:39:08.469 [http-nio-8081-exec-2] Servlet - Didn't find action
+[INFO ] 2020-02-20 17:39:52.973 [http-nio-8081-exec-2] Servlet - Incoming Post Request
+[INFO ] 2020-02-20 17:39:52.975 [http-nio-8081-exec-2] Servlet - Incoming Get Request
+[INFO ] 2020-02-20 17:39:52.978 [http-nio-8081-exec-2] Servlet - Given action: Register
+[INFO ] 2020-02-20 17:39:52.978 [http-nio-8081-exec-2] Servlet - Didn't find action
+[INFO ] 2020-02-20 18:08:45.393 [http-nio-8081-exec-5] Servlet - Incoming Post Request
+[INFO ] 2020-02-20 18:08:45.395 [http-nio-8081-exec-5] Servlet - Incoming Get Request
+[INFO ] 2020-02-20 18:08:45.403 [http-nio-8081-exec-5] Servlet - Given action: Register
+[INFO ] 2020-02-20 18:11:06.426 [http-nio-8081-exec-2] Servlet - Incoming Post Request
+[INFO ] 2020-02-20 18:11:06.428 [http-nio-8081-exec-2] Servlet - Incoming Get Request
+[INFO ] 2020-02-20 18:11:06.435 [http-nio-8081-exec-2] Servlet - Given action: Register
+[INFO ] 2020-02-20 18:13:53.529 [http-nio-8081-exec-5] Servlet - Incoming Post Request
+[INFO ] 2020-02-20 18:13:53.531 [http-nio-8081-exec-5] Servlet - Incoming Get Request
+[INFO ] 2020-02-20 18:13:53.538 [http-nio-8081-exec-5] Servlet - Given action: Register
+[INFO ] 2020-02-20 18:14:28.577 [http-nio-8081-exec-8] Servlet - Incoming Get Request
+[INFO ] 2020-02-20 18:14:28.578 [http-nio-8081-exec-8] Servlet - Given action: CreateProject

@@ -7,26 +7,39 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 
 import lombok.Getter;
 import lombok.Setter;
 
-@SuppressWarnings("deprecation")
 @Entity
-@Inheritance(strategy=javax.persistence.InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 public class Person implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long idPerson;
+	@Getter
+	private long id;
 	
 	@Getter
 	@Setter
 	private String name;
+	
+	@Getter
+	@Setter
 	private String lastName;
+	
+	@Getter
+	@Setter
 	private String login;
+	
+	@Getter
+	@Setter
 	private String password;
-
+	
+	@Getter
+	@Setter
+	AccountType accountType;
 }
