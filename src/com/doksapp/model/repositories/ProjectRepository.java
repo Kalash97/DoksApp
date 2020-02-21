@@ -23,8 +23,8 @@ public class ProjectRepository {
 		return pm.updateProject(project);
 	}
 
-	public void deleteProject(Project project) {
-		pm.deleteProject(project);
+	public void deleteProject(long id) {
+		pm.deleteProject(id);
 	}
 
 }

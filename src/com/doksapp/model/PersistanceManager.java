@@ -9,7 +9,7 @@ public interface PersistanceManager {
 
 	public Project updateProject(Project project);
 
-	public void deleteProject(Project project);
+	public void deleteProject(long id);
 
 	public Person createUser(Person person);
 

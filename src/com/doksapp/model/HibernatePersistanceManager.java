@@ -29,9 +29,10 @@ public class HibernatePersistanceManager implements PersistanceManager {
 	}
 
 	@Override
-	public void deleteProject(Project project) {
+	public void deleteProject(long id) {
 		EntityManager em = HibernateConnection.getManager();
 		em.getTransaction().begin();
+		Project project = em.find(Project.class, id);
 		em.remove(project);
 		em.getTransaction().commit();
 		em.close();

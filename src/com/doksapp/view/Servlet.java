@@ -37,6 +37,8 @@ public class Servlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		logger.info("Incoming Get Request");
 
+		
+		
 		prepareActions(req, res);
 
 		runAction(req.getParameter("action"));
@@ -70,6 +72,5 @@ public class Servlet extends HttpServlet {
 		PersonRepository pRep = new PersonRepository(hpm);
 		RegisterAction ra = new RegisterAction(sv, pRep);
 		actions.add(ra);
-
 	}
 }
