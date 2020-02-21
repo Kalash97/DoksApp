@@ -15,6 +15,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.doksapp.controller.actions.Action;
+import com.doksapp.controller.actions.CreateDocumentAction;
 import com.doksapp.controller.actions.CreateProjectAction;
 import com.doksapp.controller.actions.DeleteProjectAction;
 import com.doksapp.controller.actions.RegisterAction;
@@ -22,6 +23,7 @@ import com.doksapp.model.HibernatePersistanceManager;
 import com.doksapp.model.QuerySpec;
 import com.doksapp.model.entities.Person;
 import com.doksapp.model.entities.Project;
+import com.doksapp.model.repositories.DocumentRepository;
 import com.doksapp.model.repositories.PersonRepository;
 import com.doksapp.model.repositories.ProjectRepository;
 
@@ -75,5 +77,8 @@ public class Servlet extends HttpServlet {
 		actions.add(ra);
 		DeleteProjectAction dp = new DeleteProjectAction(sv, pr);
 		actions.add(dp);
+		DocumentRepository dRep = new DocumentRepository(hpm);
+		CreateDocumentAction cda = new CreateDocumentAction(dRep);
+		actions.add(cda);
 	}
 }

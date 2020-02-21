@@ -12,4 +12,6 @@ public interface View {
 	
 	String getIdProject();
 
+	String getIdDocument();
+
 }

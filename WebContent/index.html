@@ -7,6 +7,7 @@
 <body>
 
 	<a href="traffic?action=CreateProject">Create Project</a>
+	<a href="traffic?action=CreateDocument">Create Document</a>
 
 	<form action="traffic?action=Register" method="post">
 		l
@@ -21,9 +22,15 @@
 	</form>
 
 	<form action="traffic?action=DeleteProject" method="post">
-		id
+		Project ID
 		<input type="text" name="idProject"/>
 		<input type="submit" value="Delete project"/>
+	</form>
+	
+	<form action="traffic?action=DeleteDocument" method="post">
+		Document ID
+		<input type="text" name="idDocument"/>
+		<input type="submit" value="Delete ducument"/>
 	</form>
 
 </body>

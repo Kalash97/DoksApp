@@ -35,4 +35,9 @@ public class ServletView implements View{
 	public String getIdProject() {
 		return req.getParameter("idProject");
 	}
+
+	@Override
+	public String getIdDocument() {
+		return req.getParameter("idDocument");
+	}
 }
