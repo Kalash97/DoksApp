@@ -19,8 +19,16 @@ public class ProjectRepository {
 		return null;
 	}
 
-	public Project updateProject(Project project) {
-		return pm.updateProject(project);
+	public Project updateProjectName(long id, String name) {
+		return pm.updateProjectName(id, name);
+	}
+	
+	public Project updateProjectDesc(long id, String desc) {
+		return pm.updateProjectDesc(id, desc);	
+	}
+	
+	public Project updateProjectAll(long id, String name, String desc) {
+		return pm.updateProjectAll(id, name, desc);
 	}
 
 	public void deleteProject(long id) {

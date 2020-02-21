@@ -2,6 +2,7 @@ package com.doksapp.model;
 
 import javax.persistence.EntityManager;
 
+
 import com.doksapp.model.entities.Document;
 import com.doksapp.model.entities.Person;
 import com.doksapp.model.entities.Project;
@@ -19,15 +20,39 @@ public class HibernatePersistanceManager implements PersistanceManager {
 	}
 
 	@Override
-	public Project updateProject(Project project) {//!change
+	public Project updateProjectName(long id, String name) {
 		EntityManager em = HibernateConnection.getManager();
 		em.getTransaction().begin();
-		em.merge(project);
-		em.refresh(project);
+		Project project = em.find(Project.class, id);
+		project.setName(name);
 		em.getTransaction().commit();
 		em.close();
 		return project;
 	}
+	
+	@Override
+	public Project updateProjectDesc(long id, String desc) {
+		EntityManager em = HibernateConnection.getManager();
+		em.getTransaction().begin();
+		Project project = em.find(Project.class, id);
+		project.setDescription(desc);
+		em.getTransaction().commit();
+		em.close();
+		return project;
+	}
+
+	@Override
+	public Project updateProjectAll(long id, String name, String desc) {
+		EntityManager em = HibernateConnection.getManager();
+		em.getTransaction().begin();
+		Project project = em.find(Project.class, id);
+		project.setName(name);
+		project.setDescription(desc);
+		em.getTransaction().commit();
+		em.close();
+		return project;
+	}
+
 
 	@Override
 	public void deleteProject(long id) {
@@ -71,4 +96,5 @@ public class HibernatePersistanceManager implements PersistanceManager {
 		em.close();
 	}
 
+	
 }

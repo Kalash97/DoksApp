@@ -14,7 +14,7 @@ public class DeleteProjectAction implements Action{
 
 	@Override
 	public void launch() {
-		long id = Long.parseLong(view.getIdProject());
+		long id = Long.parseLong(view.getIdProjectDel());
 		repo.deleteProject(id);
 	}
 

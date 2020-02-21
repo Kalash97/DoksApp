@@ -18,7 +18,9 @@ import com.doksapp.controller.actions.Action;
 import com.doksapp.controller.actions.CreateDocumentAction;
 import com.doksapp.controller.actions.CreateProjectAction;
 import com.doksapp.controller.actions.DeleteProjectAction;
+import com.doksapp.controller.actions.RedirectAction;
 import com.doksapp.controller.actions.RegisterAction;
+import com.doksapp.controller.actions.UpdateProjectAction;
 import com.doksapp.model.HibernatePersistanceManager;
 import com.doksapp.model.QuerySpec;
 import com.doksapp.model.entities.Person;
@@ -39,11 +41,9 @@ public class Servlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		logger.info("Incoming Get Request");
-
-		
 		
 		prepareActions(req, res);
-
+		
 		runAction(req.getParameter("action"));
 	}
 
@@ -80,5 +80,9 @@ public class Servlet extends HttpServlet {
 		DocumentRepository dRep = new DocumentRepository(hpm);
 		CreateDocumentAction cda = new CreateDocumentAction(dRep);
 		actions.add(cda);
+		UpdateProjectAction upa = new UpdateProjectAction(sv, pr);
+		actions.add(upa);
+		RedirectAction redirectA = new RedirectAction(sv);
+		actions.add(redirectA);
 	}
 }

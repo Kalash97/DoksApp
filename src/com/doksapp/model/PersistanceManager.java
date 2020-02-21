@@ -8,7 +8,11 @@ public interface PersistanceManager {
 
 	public Project createProject(Project project);
 
-	public Project updateProject(Project project);
+	public Project updateProjectName(long id, String name);
+	
+	public Project updateProjectDesc(long id, String desc);
+	
+	public Project updateProjectAll(long id, String name, String desc);
 
 	public void deleteProject(long id);
 

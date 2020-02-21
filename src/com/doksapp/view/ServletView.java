@@ -4,11 +4,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 
 @AllArgsConstructor
 public class ServletView implements View{
 
-	private HttpServletRequest req; 
+	private HttpServletRequest req;
+	
+	@Getter
 	private HttpServletResponse res;
 	
 	@Override
@@ -32,12 +35,32 @@ public class ServletView implements View{
 	}
 
 	@Override
-	public String getIdProject() {
-		return req.getParameter("idProject");
+	public String getIdProjectDel() {
+		return req.getParameter("idProjectDel");
 	}
 
 	@Override
 	public String getIdDocument() {
 		return req.getParameter("idDocument");
+	}
+
+	@Override
+	public String getIdProjectUp() {
+		return req.getParameter("idProjectUp");
+	}
+
+	@Override
+	public String getProjectName() {
+		return req.getParameter("projectName");
+	}
+
+	@Override
+	public String getProjectDesc() {
+		return req.getParameter("projectDesc");
+	}
+
+	@Override
+	public String getTarget() {
+		return req.getParameter("target");
 	}
 }
