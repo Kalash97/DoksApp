@@ -9,5 +9,7 @@ public interface View {
 	String getName();
 
 	String getLastName();
+	
+	String getIdProject();
 
 }

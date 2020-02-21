@@ -33,3 +33,9 @@
 [INFO ] 2020-02-20 18:14:28.577 [http-nio-8081-exec-8] Servlet - Incoming Get Request
 [INFO ] 2020-02-20 18:14:28.578 [http-nio-8081-exec-8] Servlet - Given action: CreateProject
 [INFO ] 2020-02-21 09:24:25.606 [http-nio-8081-exec-4] Servlet - Incoming Get Request
+[INFO ] 2020-02-21 10:49:06.208 [http-nio-8081-exec-4] Servlet - Incoming Get Request
+[INFO ] 2020-02-21 10:49:06.216 [http-nio-8081-exec-4] Servlet - Given action: CreateProject
+[INFO ] 2020-02-21 10:49:27.874 [http-nio-8081-exec-6] Servlet - Incoming Post Request
+[INFO ] 2020-02-21 10:49:27.875 [http-nio-8081-exec-6] Servlet - Incoming Get Request
+[INFO ] 2020-02-21 10:49:27.875 [http-nio-8081-exec-6] Servlet - Given action: DeleteUser
+[INFO ] 2020-02-21 10:49:27.876 [http-nio-8081-exec-6] Servlet - Didn't find action

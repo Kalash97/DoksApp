@@ -30,4 +30,9 @@ public class ServletView implements View{
 	public String getLastName() {
 		return req.getParameter("LastName");
 	}
+
+	@Override
+	public String getIdProject() {
+		return req.getParameter("idProject");
+	}
 }
