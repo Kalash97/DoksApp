@@ -1,47 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="style.css">
 <meta charset="UTF-8">
 <title>Site</title>
 </head>
 
 <style>
-	.header{
-		width: 1366px;
-		height: 50px;
-		display: flex;
-  		align-items: center;
-		border-style: groove;
-	}
 	
-	.toolbar{
-		float: left;
-		width: 20%;
-		height: 713px;
-		border-style: groove;
-		text-align: center;
-	}
-	
-	.content{
-		width: 100%;
-		height: 713px;
-		border-style: groove;
-	}
-	
-	.container{
-		width: 1366px;
-		height: 713px;
-		margin-top: 5px;
-	}
-	
-	.alignLeft{
-		margin-left: 5px;
-		width: 20%;
-		float: left;
-	}
-	
-	.alignRight{
-		float: right;
+	div{
+		border: 1px solid; /* Temporary: To be deleted */
 	}
 	
 </style>
@@ -49,16 +17,16 @@
 <body>
 
 	<div class="header">
-		<p class="alignLeft"><font size=4>Site</font></p>
-		<p class="alignRight">
-		<font size=4>
-		Username
-		<a href="traffic?action=Redirect&target=Login.html">Logout</a>
-		</font>
-		</p>
+		<div class="alignLeft"><font size=4>Site</font></div>
+		<div class="alignRight">
+			<font size=4>
+			Username
+			<a href="traffic?action=Redirect&target=Login.html">Logout</a>
+			</font>
+		</div>
 	</div>	
 	
-	<div class="container">
+	<div class="containerSite">
 		<div class="toolbar">
 			Home
 			<br>
