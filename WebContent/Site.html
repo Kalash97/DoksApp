@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Site</title>
+</head>
+
+<style>
+	.header{
+		width: 1366px;
+		height: 50px;
+		display: flex;
+  		align-items: center;
+		border-style: groove;
+	}
+	
+	.toolbar{
+		float: left;
+		width: 20%;
+		height: 713px;
+		border-style: groove;
+		text-align: center;
+	}
+	
+	.content{
+		width: 100%;
+		height: 713px;
+		border-style: groove;
+	}
+	
+	.container{
+		width: 1366px;
+		height: 713px;
+		margin-top: 5px;
+	}
+	
+	.alignLeft{
+		margin-left: 5px;
+		width: 20%;
+		float: left;
+	}
+	
+	.alignRight{
+		float: right;
+	}
+	
+</style>
+
+<body>
+
+	<div class="header">
+		<p class="alignLeft"><font size=4>Site</font></p>
+		<p class="alignRight">
+		<font size=4>
+		Username
+		<a href="traffic?action=Redirect&target=Login.html">Logout</a>
+		</font>
+		</p>
+	</div>	
+	
+	<div class="container">
+		<div class="toolbar">
+			Home
+			<br>
+			Projects
+			<br>
+			Documents
+			<br>
+			Admin Screen
+			<br>
+			<a href="traffic?action=Redirect&target=index.html">Index</a>
+		</div>
+	
+		<div class="content">
+			Temporary content
+		</div>
+	</div>
+</body>
+</html>

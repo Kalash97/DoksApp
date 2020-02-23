@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+</head>
+
+<style>
+	.container{
+		width: 200px;
+		height: 144px;
+		border-style: groove;
+		margin: 0 auto;
+	}
+	
+	.siteName{
+		text-align: center;
+	}
+</style>
+
+
+<body>
+
+	<div class="container">
+		<div class="siteName">
+			<font size=4>Login Site</font>
+		</div>	
+
+	<form action="traffic?action=Login" method="post">
+		<br>
+		login 
+		<br>
+		<input type="text" name="Login"/>
+		<br>
+		password 
+		<br>
+		<input type="text" name="Password"/>
+		<br>
+		<input type="submit" value="Login"/>
+		<a href="traffic?action=Redirect&target=Register.html">Register</a>
+	</form>
+	</div>
+	
+	<a href="traffic?action=Redirect&target=index.html">Index</a>
+
+</body>
+</html>
