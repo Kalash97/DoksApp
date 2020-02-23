@@ -17,7 +17,10 @@ import org.apache.logging.log4j.Logger;
 import com.doksapp.controller.actions.Action;
 import com.doksapp.controller.actions.CreateDocumentAction;
 import com.doksapp.controller.actions.CreateProjectAction;
+import com.doksapp.controller.actions.DeleteDocumentAction;
 import com.doksapp.controller.actions.DeleteProjectAction;
+import com.doksapp.controller.actions.FindAllProjectsAction;
+import com.doksapp.controller.actions.FindProjectByIdAction;
 import com.doksapp.controller.actions.RedirectAction;
 import com.doksapp.controller.actions.RegisterAction;
 import com.doksapp.controller.actions.UpdateProjectAction;
@@ -84,5 +87,11 @@ public class Servlet extends HttpServlet {
 		actions.add(upa);
 		RedirectAction redirectA = new RedirectAction(sv);
 		actions.add(redirectA);
+		DeleteDocumentAction dda = new DeleteDocumentAction(sv, dRep);
+		actions.add(dda);
+		FindAllProjectsAction fap = new FindAllProjectsAction(pr);
+		actions.add(fap);
+		FindProjectByIdAction fpbi = new FindProjectByIdAction(sv, pr);
+		actions.add(fpbi);
 	}
 }

@@ -11,6 +11,6 @@ public class PersonRepository {
 	private PersistanceManager pm;
 
 	public Person createUser(Person person) {	
-		return pm.createUser(person);
+		return (Person) pm.create(person);
 	}
 }

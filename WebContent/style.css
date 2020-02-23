@@ -18,10 +18,8 @@
 
 .header {
 	width: 1366px;
-	height: 50px;
-	display: flex;
-	align-items: center;
-	border-style: groove;
+    height: 50px;
+    border-style: groove;
 }
 
 .toolbar {
@@ -44,14 +42,18 @@
 	margin-top: 5px;
 }
 
-.alignLeft {
-	display: inline;
+.siteHeaderWrapper{
 	margin-left: 5px;
+}
+
+.siteHeader{
+	font-size: 18px; 
+}
+
+.alignLeft {	
 	float: left;
 }
 
 .alignRight {
-	display: inline;
 	float: right;
-	color: red;
 }

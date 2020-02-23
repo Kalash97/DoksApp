@@ -13,21 +13,21 @@ public class UpdateProjectAction implements Action{
 	
 	@Override
 	public void launch() {//if desc field is set sets name + desc to new desc
-		long id = Long.parseLong(view.getIdProjectUp());
+		long id = Long.parseLong(view.getId());
 		String name = view.getProjectName();
 		String desc = view.getProjectDesc();
 		
-		if(name != null & desc != null) {
-			repo.updateProjectAll(id, name, desc);
-		}
-		
-		if(name != null) {
-			repo.updateProjectName(id, name);
-		}
-		
-		if(desc != null) {
-			repo.updateProjectDesc(id, desc);
-		}
+//		if(name != null & desc != null) {
+//			repo.updateProjectAll(id, name, desc);
+//		}
+//		
+//		if(name != null) {
+//			repo.updateProjectName(id, name);
+//		}
+//		
+//		if(desc != null) {
+//			repo.updateProjectDesc(id, desc);
+//		}
 	}
 
 	@Override

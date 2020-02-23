@@ -14,7 +14,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-public class Project implements Serializable {
+public class Project implements Serializable, Persistable {
 	
 	 private static final long serialVersionUID = 1L;
 	

@@ -9,17 +9,13 @@ public interface View {
 	String getName();
 
 	String getLastName();
-	
-	String getIdProjectDel();
-	
-	String getIdProjectUp();
 
 	String getProjectName();
 	
 	String getProjectDesc();
 
-	String getIdDocument();
-
 	String getTarget();
+
+	String getId();
 
 }

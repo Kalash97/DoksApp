@@ -11,11 +11,11 @@ public class DocumentRepository {
 	private PersistanceManager pm;
 	
 	public Document createDocument(Document document) {
-		return pm.createDocument(document);
+		return (Document) pm.create(document);
 		
 	}
 	
 	public void deleteDocument(long id) {
-		pm.deleteDocument(id);
+		pm.delete(id, Document.class);
 	}
 }

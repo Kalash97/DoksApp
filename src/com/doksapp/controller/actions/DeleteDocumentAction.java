@@ -13,7 +13,7 @@ public class DeleteDocumentAction implements Action{
 
 	@Override
 	public void launch() {
-		long id = Long.parseLong(view.getIdDocument());
+		long id = Long.parseLong(view.getId());
 		repo.deleteDocument(id);
 	}
 
