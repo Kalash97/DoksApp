@@ -1,6 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="ISO-8859-1">
 <link href="style.css" rel="stylesheet"/>
 <meta charset="UTF-8">
 <title>Register</title>
@@ -33,7 +36,7 @@
 		<input type="text" name="LastName" /> 
 		<br> 
 		<input type="submit" value="Register" />
-		<div class="alignRight"><a href="traffic?action=Redirect&target=Login.html">Back</a></div>
+		<div class="alignRight"><a href="traffic?action=Redirect&target=Login.jsp">Back</a></div>
 	</form>
 	</div>
 	

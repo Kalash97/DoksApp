@@ -7,6 +7,7 @@ import com.doksapp.model.PersistanceManager;
 import com.doksapp.model.QuerySpec;
 import com.doksapp.model.SearchCondition;
 import com.doksapp.model.entities.Persistable;
+import com.doksapp.model.entities.Person;
 import com.doksapp.model.entities.Project;
 
 import lombok.AllArgsConstructor;
@@ -48,7 +49,7 @@ public class ProjectRepository {
 		qs.addToList(new SearchCondition(Project.class, "id", OperationType.EQUALS, id));
 		List<Persistable> results = pm.read(qs);
 		
-		return null;
+		return results.get(0);
 	}
-
+	
 }

@@ -3,6 +3,7 @@ package com.doksapp.model;
 import java.util.List;
 
 import com.doksapp.model.entities.Persistable;
+import com.doksapp.model.entities.Person;
 import com.doksapp.model.entities.Project;
 
 public interface PersistanceManager {

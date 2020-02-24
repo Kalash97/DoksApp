@@ -19,8 +19,11 @@ import com.doksapp.controller.actions.CreateDocumentAction;
 import com.doksapp.controller.actions.CreateProjectAction;
 import com.doksapp.controller.actions.DeleteDocumentAction;
 import com.doksapp.controller.actions.DeleteProjectAction;
+import com.doksapp.controller.actions.FindAllDocsAction;
 import com.doksapp.controller.actions.FindAllProjectsAction;
+import com.doksapp.controller.actions.FindDocByIdAction;
 import com.doksapp.controller.actions.FindProjectByIdAction;
+import com.doksapp.controller.actions.LoginAction;
 import com.doksapp.controller.actions.RedirectAction;
 import com.doksapp.controller.actions.RegisterAction;
 import com.doksapp.controller.actions.UpdateProjectAction;
@@ -89,9 +92,15 @@ public class Servlet extends HttpServlet {
 		actions.add(redirectA);
 		DeleteDocumentAction dda = new DeleteDocumentAction(sv, dRep);
 		actions.add(dda);
-		FindAllProjectsAction fap = new FindAllProjectsAction(pr);
+		FindAllProjectsAction fap = new FindAllProjectsAction(sv, pr);
 		actions.add(fap);
 		FindProjectByIdAction fpbi = new FindProjectByIdAction(sv, pr);
 		actions.add(fpbi);
+		FindAllDocsAction fad = new FindAllDocsAction(dRep); //do stestowania
+		actions.add(fad);
+		FindDocByIdAction fdbi = new FindDocByIdAction(sv, dRep); //do stestowania
+		actions.add(fdbi);
+		LoginAction la = new LoginAction(sv, pRep);
+		actions.add(la);
 	}
 }

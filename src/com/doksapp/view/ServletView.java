@@ -8,7 +8,8 @@ import lombok.Getter;
 
 @AllArgsConstructor
 public class ServletView implements View{
-
+	
+	@Getter
 	private HttpServletRequest req;
 	
 	@Getter

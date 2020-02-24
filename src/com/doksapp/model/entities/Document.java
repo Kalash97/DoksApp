@@ -17,6 +17,7 @@ public class Document implements Serializable, Persistable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Getter
 	private long id;
 
 	@Getter
