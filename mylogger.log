@@ -1062,3 +1062,7 @@
 [INFO ] 2020-02-24 19:22:20.747 [http-nio-8081-exec-6] Servlet - Given action: FindAllProjects
 [INFO ] 2020-02-24 19:24:23.485 [http-nio-8081-exec-9] Servlet - Incoming Get Request
 [INFO ] 2020-02-24 19:24:23.486 [http-nio-8081-exec-9] Servlet - Given action: FindAllProjects
+[INFO ] 2020-02-25 09:25:07.526 [http-nio-8081-exec-3] Servlet - Incoming Get Request
+[INFO ] 2020-02-25 09:25:07.544 [http-nio-8081-exec-3] Servlet - Given action: Redirect
+[INFO ] 2020-02-25 09:25:10.061 [http-nio-8081-exec-6] Servlet - Incoming Get Request
+[INFO ] 2020-02-25 09:25:10.062 [http-nio-8081-exec-6] Servlet - Given action: Redirect
