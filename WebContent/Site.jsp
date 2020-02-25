@@ -37,6 +37,7 @@
 						<th>id</th>
 						<th>name</th>
 						<th>description</th>
+						<th>delete</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -45,10 +46,33 @@
 							<td>${p44.id}</td>
 							<td>${p44.name}</td>
 							<td>${p44.description}</td>
+							<td><a href="<c:url value = "traffic?action=DeleteProject&id=${p44.id}"/>">Delete</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
+
+			<table border="1">
+				<thead>
+					<tr>
+						<th>id</th>
+						<th>name</th>
+						<th>content</th>
+						<th>delete</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${document444}" var="d66">
+						<tr>
+							<td>${d66.id}</td>
+							<td>${d66.name}</td>
+							<td>${d66.content}</td>
+							<td><a href="<c:url value = "traffic?action=DeleteDocument&id=${d66.id}"/>">Delete</a></td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+
 		</div>
 	</div>
 </body>

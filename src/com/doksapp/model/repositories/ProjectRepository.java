@@ -29,18 +29,16 @@ public class ProjectRepository {
 //		return pm.updateProjectAll(id, name, desc);
 //	}
 
-	
-	
 	public Project createProject(Project project) {
 		return (Project) pm.create(project);
 	}
-	
+
 	public void deleteProject(long id) {
 		pm.delete(id, Project.class);
 	}
 
 	public List<Persistable> readAllProjects() {
-		QuerySpec qs = new QuerySpec(Project.class);		
+		QuerySpec qs = new QuerySpec(Project.class);
 		return pm.read(qs);
 	}
 
@@ -48,8 +46,11 @@ public class ProjectRepository {
 		QuerySpec qs = new QuerySpec(Project.class);
 		qs.addToList(new SearchCondition(Project.class, "id", OperationType.EQUALS, id));
 		List<Persistable> results = pm.read(qs);
-		
-		return results.get(0);
+		if (results.size() > 0) {
+			return results.get(0);
+		}else {
+			return null;
+		}
 	}
-	
+
 }

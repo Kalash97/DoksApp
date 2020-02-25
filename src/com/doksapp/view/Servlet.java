@@ -96,7 +96,7 @@ public class Servlet extends HttpServlet {
 		actions.add(fap);
 		FindProjectByIdAction fpbi = new FindProjectByIdAction(sv, pr);
 		actions.add(fpbi);
-		FindAllDocsAction fad = new FindAllDocsAction(dRep); //do stestowania
+		FindAllDocsAction fad = new FindAllDocsAction(sv, dRep); //do stestowania
 		actions.add(fad);
 		FindDocByIdAction fdbi = new FindDocByIdAction(sv, dRep); //do stestowania
 		actions.add(fdbi);
