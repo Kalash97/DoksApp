@@ -8,6 +8,7 @@ import com.doksapp.model.QuerySpec;
 import com.doksapp.model.SearchCondition;
 import com.doksapp.model.entities.Persistable;
 import com.doksapp.model.entities.Person;
+import com.doksapp.model.entities.Project;
 
 import lombok.AllArgsConstructor;
 
@@ -35,5 +36,14 @@ public class PersonRepository {
 		qs.addToList(new SearchCondition(Person.class, "password", OperationType.EQUALS, password));
 		List<Persistable> read = pm.read(qs);
 		return read.size()>0?(Person) read.get(0):null;	
+	}
+	
+	public Person assignProjectToUser(long idPerson, long idProject) {
+		return pm.assignProjectToUser(idPerson, idProject);
+	}
+
+	public Person assignDocumentToUser(long idPerson, long idDoc) {
+		return pm.assignDocumentToUser(idPerson, idDoc);
+		
 	}
 }

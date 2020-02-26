@@ -104,4 +104,30 @@ public class HibernatePersistanceManager implements PersistanceManager {
 		return (List<Persistable>) query.getResultList();
 	}
 
+	@Override
+	public Person assignProjectToUser(long idPerson, long idProject) {
+		EntityManager em = HibernateConnection.getManager();
+		em.getTransaction().begin();
+		Person person = em.find(Person.class, idPerson);
+		Project project = em.find(Project.class, idProject);
+		person.getProjects().add(project);
+		//System.out.println("Przed commit: "+person.getProjects().size());
+		em.getTransaction().commit();
+		//System.out.println("Po commit: "+person.getProjects().size());
+		em.close();
+		//System.out.println("Po close: "+person.getProjects().size());
+		return person;
+	}
+
+	@Override
+	public Person assignDocumentToUser(long idPerson, long idDoc) {
+		EntityManager em = HibernateConnection.getManager();
+		em.getTransaction().begin();
+		Person person = em.find(Person.class, idPerson);
+		Document document = em.find(Document.class, idDoc);
+		person.getDocuments().add(document);
+		em.getTransaction().commit();
+		em.close();
+		return person;
+	}
 }

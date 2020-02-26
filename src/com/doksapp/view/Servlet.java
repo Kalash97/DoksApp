@@ -15,6 +15,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.doksapp.controller.actions.Action;
+import com.doksapp.controller.actions.AssignUserToDocAction;
+import com.doksapp.controller.actions.AssignUserToProjectAction;
 import com.doksapp.controller.actions.CreateDocumentAction;
 import com.doksapp.controller.actions.CreateProjectAction;
 import com.doksapp.controller.actions.DeleteDocumentAction;
@@ -102,5 +104,9 @@ public class Servlet extends HttpServlet {
 		actions.add(fdbi);
 		LoginAction la = new LoginAction(sv, pRep);
 		actions.add(la);
+		AssignUserToProjectAction autp = new AssignUserToProjectAction(pRep);
+		actions.add(autp);
+		AssignUserToDocAction autd = new AssignUserToDocAction(pRep);
+		actions.add(autd);
 	}
 }

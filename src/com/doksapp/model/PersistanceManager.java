@@ -20,4 +20,7 @@ public interface PersistanceManager {
 
 	public List<Persistable> read(QuerySpec qs);
 
+	public Person assignProjectToUser(long idPerson, long idProject);
+
+	public Person assignDocumentToUser(long idPerson, long idDoc);
 }
