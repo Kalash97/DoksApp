@@ -6,7 +6,7 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum OperationType {
 
-	EQUALS("="), LOWER("<"), GREATER(">");
+	EQUALS("="), LOWER("<"), GREATER(">"), MEMBEROF("MEMBER OF");
 	
 	@Getter
 	String value;

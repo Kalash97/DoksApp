@@ -25,7 +25,9 @@ import com.doksapp.controller.actions.FindAllDocsAction;
 import com.doksapp.controller.actions.FindAllProjectsAction;
 import com.doksapp.controller.actions.FindDocByIdAction;
 import com.doksapp.controller.actions.FindProjectByIdAction;
+import com.doksapp.controller.actions.FindProjectsOfUserAction;
 import com.doksapp.controller.actions.LoginAction;
+import com.doksapp.controller.actions.LogoutAction;
 import com.doksapp.controller.actions.RedirectAction;
 import com.doksapp.controller.actions.RegisterAction;
 import com.doksapp.controller.actions.UpdateProjectAction;
@@ -104,9 +106,13 @@ public class Servlet extends HttpServlet {
 		actions.add(fdbi);
 		LoginAction la = new LoginAction(sv, pRep);
 		actions.add(la);
-		AssignUserToProjectAction autp = new AssignUserToProjectAction(pRep);
+		AssignUserToProjectAction autp = new AssignUserToProjectAction(sv, pRep);
 		actions.add(autp);
 		AssignUserToDocAction autd = new AssignUserToDocAction(pRep);
 		actions.add(autd);
+		LogoutAction logoutAction = new LogoutAction(sv);
+		actions.add(logoutAction);
+		FindProjectsOfUserAction fpou = new FindProjectsOfUserAction(sv, pr);
+		actions.add(fpou);
 	}
 }

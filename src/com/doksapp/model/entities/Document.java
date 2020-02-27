@@ -31,7 +31,7 @@ public class Document implements Serializable, Persistable {
 	@Setter
 	private String content;
 	
-	@ManyToMany
-	List<Person> persons = new ArrayList<Person>();
+//	@ManyToMany
+//	List<Person> persons = new ArrayList<Person>();
 
 }

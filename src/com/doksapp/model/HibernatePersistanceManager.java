@@ -1,12 +1,15 @@
 package com.doksapp.model;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -15,10 +18,13 @@ import com.doksapp.model.entities.Document;
 import com.doksapp.model.entities.Persistable;
 import com.doksapp.model.entities.Person;
 import com.doksapp.model.entities.Project;
+import com.doksapp.view.Servlet;
 import com.mysql.cj.Query;
 
 public class HibernatePersistanceManager implements PersistanceManager {
 
+	private static Logger logger = LogManager.getLogger(HibernatePersistanceManager.class);
+	
 	@Override
 	public Project updateProjectName(long id, String name) {
 		EntityManager em = HibernateConnection.getManager();
@@ -79,27 +85,60 @@ public class HibernatePersistanceManager implements PersistanceManager {
 	public List<Persistable> read(QuerySpec qs) {
 		EntityManager em = HibernateConnection.getManager();
 
-		Class<?> resultType = qs.getResultType();
-		String name = resultType.getSimpleName();
-		String hql = "SELECT " + name.charAt(0) + " FROM " + name + " " + name.charAt(0);
+		String prefix = "SELECT " + qs.getResultType().getSimpleName().substring(0, 2) + " FROM ";
+		String tables = "";
+		String conditions = "";
+
+		HashSet<String> tablesX = new HashSet<String>();
+
+		tablesX.add(qs.getResultType().getSimpleName());
+		for (SearchCondition sc : qs.getSearchConditions()) {
+			tablesX.add(sc.getEntityType().getSimpleName());
+		}
+
+		Iterator<String> iteratorTablesX = tablesX.iterator();
+
+		while (iteratorTablesX.hasNext()) {
+			String s = iteratorTablesX.next();
+			tables += s + " " + s.substring(0, 2);
+
+			if (iteratorTablesX.hasNext()) {
+				tables += ", ";
+			}
+		}
 
 		Iterator<SearchCondition> iterator = qs.getSearchConditions().iterator();
 		if (qs.getSearchConditions().size() > 0) {
-			hql += " WHERE ";
+			conditions += " WHERE ";
 			while (iterator.hasNext()) {
 				SearchCondition next = iterator.next();
-				hql += next.getEntityType().getSimpleName().charAt(0);
-				hql += "." + next.getEntityField();
-				hql += next.getType().getValue();
-				hql += "'" + next.getArgument() + "'";
-				
+
+				if (next.getType() == OperationType.MEMBEROF) {
+
+					conditions += next.getEntityType().getSimpleName().substring(0, 2);
+					conditions +=" " + next.getType().getValue()+" ";
+					conditions += next.getEntityTypeSecond().getSimpleName().substring(0, 2)+".";
+					conditions += next.getFieldOfSecond();
+
+				} else {
+
+					conditions += next.getEntityType().getSimpleName().substring(0, 2);
+					conditions += "." + next.getEntityField();
+					conditions += next.getType().getValue();
+					conditions += "'" + next.getArgument() + "'";
+
+				}
+
 				if (iterator.hasNext()) {
-					hql += " AND ";
+					conditions += " AND ";
 				}
 			}
 		}
 
-		TypedQuery<?> query = em.createQuery(hql, resultType);
+		String hql = prefix + tables + conditions;
+		logger.info("Read query to be executed: "+hql);
+
+		TypedQuery<?> query = em.createQuery(hql, qs.getResultType());
 
 		return (List<Persistable>) query.getResultList();
 	}
@@ -111,11 +150,11 @@ public class HibernatePersistanceManager implements PersistanceManager {
 		Person person = em.find(Person.class, idPerson);
 		Project project = em.find(Project.class, idProject);
 		person.getProjects().add(project);
-		//System.out.println("Przed commit: "+person.getProjects().size());
+		// System.out.println("Przed commit: "+person.getProjects().size());
 		em.getTransaction().commit();
-		//System.out.println("Po commit: "+person.getProjects().size());
+		// System.out.println("Po commit: "+person.getProjects().size());
 		em.close();
-		//System.out.println("Po close: "+person.getProjects().size());
+		// System.out.println("Po close: "+person.getProjects().size());
 		return person;
 	}
 
@@ -131,3 +170,8 @@ public class HibernatePersistanceManager implements PersistanceManager {
 		return person;
 	}
 }
+
+//Class<?> resultType = qs.getResultType();
+//String name = resultType.getSimpleName();
+//String tables = name + " " + name.charAt(0);
+//String hql = "SELECT " + name.charAt(0) + " FROM " + tables;		

@@ -1,25 +1,29 @@
 .containerRegister {
 	width: 200px;
-	height: 220px;
+	height: 225px;
 	border-style: groove;
 	margin: 0 auto;
+	border-radius: 10px;
 }
 
 .siteName {
 	text-align: center;
+	font-family: Arial;
 }
 
 .containerLogin {
-	width: 200px;
-	height: 144px;
-	border-style: groove;
-	margin: 0 auto;
+    width: 200px;
+    height: 150px;
+    border-style: groove;
+    margin: 0 auto;
+    border-radius: 10px;
 }
 
 .header {
 	width: 1366px;
     height: 50px;
     border-style: groove;
+    border-radius: 10px;
 }
 
 .toolbar {
@@ -28,6 +32,8 @@
 	height: 713px;
 	border-style: groove;
 	text-align: center;
+	background-color: #87AAE3;
+	color: white;
 }
 
 .content {
@@ -56,4 +62,9 @@
 
 .alignRight {
 	float: right;
+}
+
+.innerDiv{
+	margin: 5px;
+	margin-bottom: 10px;
 }

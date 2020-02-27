@@ -37,13 +37,13 @@ public class PersonRepository {
 		List<Persistable> read = pm.read(qs);
 		return read.size()>0?(Person) read.get(0):null;	
 	}
-	
-	public Person assignProjectToUser(long idPerson, long idProject) {
-		return pm.assignProjectToUser(idPerson, idProject);
-	}
 
 	public Person assignDocumentToUser(long idPerson, long idDoc) {
 		return pm.assignDocumentToUser(idPerson, idDoc);
 		
+	}
+
+	public Person assignProjectToUser(long idPerson, long idProject) {
+		return pm.assignProjectToUser(idPerson, idProject);
 	}
 }

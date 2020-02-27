@@ -5,6 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <link href="style.css" rel="stylesheet"/>
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.12.0/css/all.css">
 <meta charset="UTF-8">
 <title>Register</title>
 </head>
@@ -19,19 +20,19 @@
 	
 	<form action="traffic?action=Register" method="post">
 		<br>
-		login 
+		<font color="blue">login</font> 
 		<br>
 		<input type="text" name="Login" /> 
 		<br>
-		password 
+		<font color="blue">password </font>
 		<br>
 		<input type="text" name="Password" /> 
 		<br>
-		name 
+		<font color="blue">name </font>
 		<br>
 		<input type="text" name="Name" />
 		<br>
-		lastName 
+		<font color="blue">lastName </font>
 		<br>
 		<input type="text" name="LastName" /> 
 		<br> 

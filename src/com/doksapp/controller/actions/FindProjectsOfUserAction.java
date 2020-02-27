@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.doksapp.model.entities.AccountType;
 import com.doksapp.model.entities.Persistable;
-import com.doksapp.model.repositories.DocumentRepository;
+import com.doksapp.model.repositories.ProjectRepository;
 import com.doksapp.view.View;
 
 import lombok.AllArgsConstructor;
@@ -13,21 +13,22 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @AllArgsConstructor
-public class FindDocByIdAction implements Action{
+public class FindProjectsOfUserAction implements Action{
 
 	private View view;
-	private DocumentRepository repo;
+	private ProjectRepository repo;
 	
 	@Override
 	public void launch() {
-		String id=view.getId();
-		Persistable readDocsById = repo.readDocumentsById(id);
-		System.out.println(readDocsById);
+		List<Persistable> list = repo.findProjectsOfUser(view.getId());
+		for(Persistable p : list) {
+			System.out.println("Pou: "+p);
+		}
 	}
 
 	@Override
 	public String getName() {
-		return "FindDocById";
+		return "FindProjectsOfUser";
 	}
 
 	public List<AccountType> getAllowedRoles() {

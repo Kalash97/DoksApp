@@ -1,33 +1,37 @@
 package com.doksapp.controller.actions;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
+import com.doksapp.controller.utils.SessionManager;
 import com.doksapp.model.entities.AccountType;
-import com.doksapp.model.entities.Persistable;
-import com.doksapp.model.repositories.DocumentRepository;
-import com.doksapp.view.View;
+import com.doksapp.view.ServletView;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @AllArgsConstructor
-public class FindDocByIdAction implements Action{
+public class LogoutAction implements Action {
 
-	private View view;
-	private DocumentRepository repo;
-	
+	private ServletView view;
+
 	@Override
 	public void launch() {
-		String id=view.getId();
-		Persistable readDocsById = repo.readDocumentsById(id);
-		System.out.println(readDocsById);
+
+		SessionManager sm = new SessionManager(view.getReq());
+		sm.destroyCutrrentSession();
+		try {
+			view.getRes().sendRedirect("Login.jsp");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public String getName() {
-		return "FindDocById";
+		return "Logout";
 	}
 
 	public List<AccountType> getAllowedRoles() {

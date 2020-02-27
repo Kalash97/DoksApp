@@ -1,19 +1,23 @@
 package com.doksapp.controller.actions;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpSession;
 
 import com.doksapp.controller.utils.SessionManager;
+import com.doksapp.model.entities.AccountType;
 import com.doksapp.model.entities.Persistable;
 import com.doksapp.model.entities.Person;
 import com.doksapp.model.repositories.ProjectRepository;
 import com.doksapp.view.ServletView;
 
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor
 @AllArgsConstructor
 public class FindAllProjectsAction implements Action {
 	
@@ -51,5 +55,10 @@ public class FindAllProjectsAction implements Action {
 	public String getName() {
 		return "FindAllProjects";
 	}
-
+	
+	@Override
+	public List<AccountType> getAllowedRoles() {
+		return Arrays.asList(new AccountType[]{AccountType.ADMIN, AccountType.MANAGER, AccountType.WORKER});
+	}
+	
 }

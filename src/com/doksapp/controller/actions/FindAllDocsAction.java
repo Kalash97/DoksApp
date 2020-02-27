@@ -1,16 +1,20 @@
 package com.doksapp.controller.actions;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.ServletException;
 
+import com.doksapp.model.entities.AccountType;
 import com.doksapp.model.entities.Persistable;
 import com.doksapp.model.repositories.DocumentRepository;
 import com.doksapp.view.ServletView;
 
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor
 @AllArgsConstructor
 public class FindAllDocsAction implements Action {
 
@@ -38,4 +42,8 @@ public class FindAllDocsAction implements Action {
 		return "FindAllDocs";
 	}
 
+	public List<AccountType> getAllowedRoles() {
+		return Arrays.asList(new AccountType[]{AccountType.ADMIN, AccountType.MANAGER, AccountType.WORKER});
+	}
+	
 }

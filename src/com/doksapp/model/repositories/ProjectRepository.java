@@ -42,14 +42,22 @@ public class ProjectRepository {
 		return pm.read(qs);
 	}
 
+	// todo liczba pojedyncza
 	public Persistable readProjectsById(String id) {
 		QuerySpec qs = new QuerySpec(Project.class);
 		qs.addToList(new SearchCondition(Project.class, "id", OperationType.EQUALS, id));
 		List<Persistable> results = pm.read(qs);
 		if (results.size() > 0) {
 			return results.get(0);
-		}else {
+		} else {
 			return null;
 		}
+	}
+
+	public List<Persistable> findProjectsOfUser(String id) {
+		QuerySpec qs = new QuerySpec(Project.class);
+		qs.addToList(new SearchCondition(Person.class, "id", OperationType.EQUALS, id));
+		qs.addToList(new SearchCondition(Project.class, OperationType.MEMBEROF, Person.class, "projects"));
+		return pm.read(qs);
 	}
 }

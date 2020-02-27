@@ -7,8 +7,8 @@ import lombok.Getter;
 
 public class QuerySpec {
 
-	public QuerySpec(Class<?> c) {
-		this.resultType = c;
+	public QuerySpec(Class<?> resultType) {
+		this.resultType = resultType;
 	}
 
 	@Getter
