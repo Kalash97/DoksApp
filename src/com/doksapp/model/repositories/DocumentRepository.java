@@ -2,12 +2,17 @@ package com.doksapp.model.repositories;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+
+import com.doksapp.model.HibernateConnection;
 import com.doksapp.model.OperationType;
 import com.doksapp.model.PersistanceManager;
 import com.doksapp.model.QuerySpec;
 import com.doksapp.model.SearchCondition;
 import com.doksapp.model.entities.Document;
 import com.doksapp.model.entities.Persistable;
+import com.doksapp.model.entities.Person;
+import com.doksapp.model.entities.Project;
 
 import lombok.AllArgsConstructor;
 
@@ -36,5 +41,12 @@ public class DocumentRepository {
 		List<Persistable> results = pm.read(qs);
 		
 		return results.get(0);
+	}
+
+	public List<Persistable> findDocumentsOfProject(String id) {
+		QuerySpec qs = new QuerySpec(Document.class);
+		qs.addToList(new SearchCondition(Project.class, "id", OperationType.EQUALS, id));
+		qs.addToList(new SearchCondition(Document.class, OperationType.MEMBEROF, Project.class, "documents"));
+		return pm.read(qs);
 	}
 }

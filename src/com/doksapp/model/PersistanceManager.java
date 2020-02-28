@@ -23,4 +23,6 @@ public interface PersistanceManager {
 	public Person assignProjectToUser(long idPerson, long idProject);
 
 	public Person assignDocumentToUser(long idPerson, long idDoc);
+
+	public Project assignDocumentToProject(long idProject, long idDoc);
 }

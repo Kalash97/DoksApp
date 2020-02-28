@@ -60,4 +60,8 @@ public class ProjectRepository {
 		qs.addToList(new SearchCondition(Project.class, OperationType.MEMBEROF, Person.class, "projects"));
 		return pm.read(qs);
 	}
+
+	public Project assignDocumentToProject(long idProject, long idDoc) {
+		return pm.assignDocumentToProject(idProject, idDoc);
+	}
 }

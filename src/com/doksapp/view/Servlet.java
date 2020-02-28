@@ -15,6 +15,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.doksapp.controller.actions.Action;
+import com.doksapp.controller.actions.AssignDocumentToProjectAction;
 import com.doksapp.controller.actions.AssignUserToDocAction;
 import com.doksapp.controller.actions.AssignUserToProjectAction;
 import com.doksapp.controller.actions.CreateDocumentAction;
@@ -24,6 +25,7 @@ import com.doksapp.controller.actions.DeleteProjectAction;
 import com.doksapp.controller.actions.FindAllDocsAction;
 import com.doksapp.controller.actions.FindAllProjectsAction;
 import com.doksapp.controller.actions.FindDocByIdAction;
+import com.doksapp.controller.actions.FindDocumentsOfProjectAction;
 import com.doksapp.controller.actions.FindProjectByIdAction;
 import com.doksapp.controller.actions.FindProjectsOfUserAction;
 import com.doksapp.controller.actions.LoginAction;
@@ -114,5 +116,9 @@ public class Servlet extends HttpServlet {
 		actions.add(logoutAction);
 		FindProjectsOfUserAction fpou = new FindProjectsOfUserAction(sv, pr);
 		actions.add(fpou);
+		AssignDocumentToProjectAction adtp = new AssignDocumentToProjectAction(sv,pr);
+		actions.add(adtp);
+		FindDocumentsOfProjectAction fdop = new FindDocumentsOfProjectAction(sv, dRep);
+		actions.add(fdop);
 	}
 }

@@ -35,6 +35,7 @@ public class Project implements Serializable, Persistable {
 	private String description;
 	
 	@OneToMany
+	@Getter
 	List<Document> documents = new ArrayList<Document>();
 	
 //	@ManyToMany

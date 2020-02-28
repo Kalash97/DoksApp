@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,50 +39,53 @@
 			<br>
 			<a href="traffic?action=CreateProject">Create Project</a>
 			<br>
-			<table border="1">
-				<thead>
-					<tr>
-						<th>id</th>
-						<th>name</th>
-						<th>description</th>
-						<th>delete</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach items="${projects555}" var="p44">
+			<c:if test="${fn:length(projects555) gt 0}">
+				<table border="1">
+					<thead>
 						<tr>
-							<td>${p44.id}</td>
-							<td>${p44.name}</td>
-							<td>${p44.description}</td>
-							<td><a href="<c:url value = "traffic?action=DeleteProject&id=${p44.id}"/>"><i class="fas fa-trash-alt"></i></a></td>
+							<th>id</th>
+							<th>name</th>
+							<th>description</th>
+							<th>delete</th>
 						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-			
+					</thead>
+					<tbody>
+						<c:forEach items="${projects555}" var="p44">
+							<tr>
+								<td>${p44.id}</td>
+								<td>${p44.name}</td>
+								<td>${p44.description}</td>
+								<td><a href="<c:url value = "traffic?action=DeleteProject&id=${p44.id}"/>"><i class="fas fa-trash-alt"></i></a></td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</c:if>
 			<br/>
 			<br/>
 			
-			<table border="1">
-				<thead>
-					<tr>
-						<th>id</th>
-						<th>name</th>
-						<th>content</th>
-						<th>delete</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach items="${document444}" var="d66">
+			<c:if test="${fn:length(document444) gt 0}">
+				<table border="1">
+					<thead>
 						<tr>
-							<td>${d66.id}</td>
-							<td>${d66.name}</td>
-							<td>${d66.content}</td>
-							<td><a href="<c:url value = "traffic?action=DeleteDocument&id=${d66.id}"/>"><i class="fas fa-trash-alt"></i></a></td>
+							<th>id</th>
+							<th>name</th>
+							<th>content</th>
+							<th>delete</th>
 						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
+					</thead>
+					<tbody>
+						<c:forEach items="${document444}" var="d66">
+							<tr>
+								<td>${d66.id}</td>
+								<td>${d66.name}</td>
+								<td>${d66.content}</td>
+								<td><a href="<c:url value = "traffic?action=DeleteDocument&id=${d66.id}"/>"><i class="fas fa-trash-alt"></i></a></td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</c:if>
 
 		</div>
 	</div>

@@ -9,6 +9,7 @@ import com.doksapp.controller.actions.AssignUserToProjectAction;
 import com.doksapp.model.HibernateConnection;
 import com.doksapp.model.HibernatePersistanceManager;
 import com.doksapp.model.entities.AccountType;
+import com.doksapp.model.entities.Document;
 import com.doksapp.model.entities.Person;
 import com.doksapp.model.entities.Project;
 import com.doksapp.model.repositories.PersonRepository;
@@ -20,6 +21,7 @@ public class StaticSetup {
 //		createTestData();
 		//createManager();
 		//createWorker();
+		//createDoc();
 	}
 	
 	private static void createTestData() {
@@ -77,6 +79,18 @@ public class StaticSetup {
 		EntityManager em = HibernateConnection.getManager();
 		em.getTransaction().begin();
 		em.persist(manager);
+		em.getTransaction().commit();
+		em.close();
+	}
+	
+	private static void createDoc() {
+		Document doc = new Document();
+		doc.setName("Doc1");
+		doc.setContent("Content1");
+
+		EntityManager em = HibernateConnection.getManager();
+		em.getTransaction().begin();
+		em.persist(doc);
 		em.getTransaction().commit();
 		em.close();
 	}

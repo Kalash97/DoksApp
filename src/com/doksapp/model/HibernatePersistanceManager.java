@@ -169,6 +169,18 @@ public class HibernatePersistanceManager implements PersistanceManager {
 		em.close();
 		return person;
 	}
+
+	@Override
+	public Project assignDocumentToProject(long idProject, long idDoc) {
+		EntityManager em = HibernateConnection.getManager();
+		em.getTransaction().begin();
+		Project project = em.find(Project.class, idProject);
+		Document document = em.find(Document.class, idDoc);
+		project.getDocuments().add(document);
+		em.getTransaction().commit();
+		em.close();
+		return project;
+	}
 }
 
 //Class<?> resultType = qs.getResultType();
