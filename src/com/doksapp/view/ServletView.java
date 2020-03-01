@@ -54,4 +54,9 @@ public class ServletView implements View{
 	public String getTarget() {
 		return req.getParameter("target");
 	}
+
+	@Override
+	public String getType() {
+		return req.getParameter("type");
+	}
 }

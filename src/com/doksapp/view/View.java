@@ -18,4 +18,5 @@ public interface View {
 
 	String getId();
 
+	String getType();
 }

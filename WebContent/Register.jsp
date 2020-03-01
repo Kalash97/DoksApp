@@ -35,6 +35,14 @@
 		<font color="blue">lastName </font>
 		<br>
 		<input type="text" name="LastName" /> 
+		<br>
+		<font color="blue">Account Type </font>
+		<br>
+		<select name="type">
+			<option value="Worker">Worker</option>
+			<option value="Manager">Manager</option>
+		</select>
+		<br>
 		<br> 
 		<input type="submit" value="Register" />
 		<div class="alignRight"><a href="traffic?action=Redirect&target=Login.jsp">Back</a></div>

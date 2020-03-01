@@ -24,12 +24,19 @@ public class RegisterAction implements Action{
 		String password = view.getPassword();
 		String name = view.getName();
 		String lastName = view.getLastName();
+		String account = view.getType();
 		
 		Person person = new Person();
 		person.setLogin(login);
 		person.setPassword(password);
 		person.setName(name);
 		person.setLastName(lastName);
+		if(account.compareTo("Worker")==0) {
+			person.setAccountType(AccountType.WORKER);
+		}
+		if(account.compareTo("Manager")==0) {
+			person.setAccountType(AccountType.MANAGER);
+		}
 		
 		repo.createUser(person);
 	}

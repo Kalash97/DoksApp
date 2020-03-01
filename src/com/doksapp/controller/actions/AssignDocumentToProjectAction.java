@@ -19,11 +19,8 @@ public class AssignDocumentToProjectAction implements Action {
 
 	@Override
 	public void launch() {
-		// long idProject = Long.parseLong(view.getId());
-		// long idDoc = Long.parseLong(view.getTarget());
-
-		long idProject = 3;
-		long idDoc = 7;
+		long idProject = Long.parseLong(view.getId());
+		long idDoc = Long.parseLong(view.getTarget());
 
 		repo.assignDocumentToProject(idProject, idDoc);
 	}

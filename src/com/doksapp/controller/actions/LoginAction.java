@@ -37,6 +37,7 @@ public class LoginAction implements Action{
 
 			session=null;
 			session=sm.getCurrentSesion();
+			System.out.println("Sesja na loginAction"+session);
 		    System.out.println("Na LoginAction: "+session.getAttribute("newUser"));
 		}
 		try {
