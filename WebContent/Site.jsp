@@ -17,30 +17,42 @@
 
 	<div class="header">
 		<div class="alignLeft siteHeaderWrapper">
-			<p class="siteHeader">Site</p>
+			<p class="siteHeader"><i><b>Site</b></i></p>
 		</div>
 		<div class="alignRight">
 			<p class="siteHeader">
-				Hello:<font color="blue">${username}</font> <a
-					href="traffic?action=Logout"><i class="fas fa-sign-out-alt"></i>Logout</a>
+				Hello:<font color="blue"><c:out value="${username}"/></font> <a
+					href="traffic?action=Logout" class="buttonBig"><i class="fas fa-sign-out-alt"></i>Logout</a>
 			</p>
 		</div>
 	</div>
 
 	<div class="containerSite">
 		<div class="toolbar">
-			<i class="fas fa-long-arrow-alt-right"></i><a
-				href="traffic?action=Redirect&target=Site.jsp">Home</a> <br> <i
-				class="fas fa-long-arrow-alt-right"></i><a
-				href="traffic?action=FindProjectsOfUser">Projects </a> <br> <i
-				class="fas fa-long-arrow-alt-right"></i>Documents <br> <i
-				class="fas fa-long-arrow-alt-right"></i>Admin Screen <br> <a
-				href="traffic?action=Redirect&target=index.html">Index</a>
+			<div class="buttons">
+				<i class="fas fa-long-arrow-alt-right"></i><a href="traffic?action=Redirect&target=Site.jsp" class="buttonBig">Home</a> <br><br>
+				<i class="fas fa-long-arrow-alt-right"></i><a href="traffic?action=FindProjectsOfUser" class="buttonBig">Projects </a> <br><br>
+				<i class="fas fa-long-arrow-alt-right"></i>Documents <br><br>
+				<i class="fas fa-long-arrow-alt-right"></i>Admin Screen <br><br>
+				<a href="traffic?action=Redirect&target=index.html">Index</a>
+			</div>
 		</div>
 
 		<div class="content">
-			Temporary content <br> <a href="traffic?action=CreateProject">Create
-				Project</a> <br>
+		<c:out value="${randomAtt}"/>
+		<c:out value="${randomAtt2}"/>
+		<c:out value="${randomAtt3}"/>
+			Temporary content <br> <a href="traffic?action=CreateProject">Create Project</a> <br> 
+			
+			<form action="traffic?action=UpdateProject" method="post">
+				Project ID
+				<input type="text" name="id"/>
+				name
+				<input type="text" name="projectName"/>
+				description
+				<input type="text" name="projectDesc"/>	
+				<input type="submit" value="Update project"/>
+			</form>
 			
 			<!--<c:if test="${fn:length(projects444) gt 0}">
 			<table border="1">
@@ -75,6 +87,7 @@
 					</tr>
 				</thead>
 				<tbody>
+					
 					<c:forEach items="${projects444}" var="p44">
 						<tr>
 							<td>${p44.id}</td>
@@ -110,7 +123,6 @@
 					</tbody>
 				</table>
 			</c:if>
-
 		</div>
 	</div>
 </body>

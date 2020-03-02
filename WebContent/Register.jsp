@@ -15,7 +15,7 @@
 <div class="containerRegister">
 
 	<div class="siteName">
-		<font size=4>Register Site</font>
+		<font size=4><i>Register Site</i></font>
 	</div>
 	
 	<form action="traffic?action=Register" method="post">
@@ -45,7 +45,7 @@
 		<br>
 		<br> 
 		<input type="submit" value="Register" />
-		<div class="alignRight"><a href="traffic?action=Redirect&target=Login.jsp">Back</a></div>
+		<div class="alignRight"><a href="traffic?action=Redirect&target=Login.jsp" class="button">Back</a></div>
 	</form>
 	</div>
 	

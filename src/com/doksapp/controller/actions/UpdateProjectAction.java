@@ -23,17 +23,17 @@ public class UpdateProjectAction implements Action{
 		String name = view.getProjectName();
 		String desc = view.getProjectDesc();
 		
-//		if(name != null & desc != null) {
-//			repo.updateProjectAll(id, name, desc);
-//		}
-//		
-//		if(name != null) {
-//			repo.updateProjectName(id, name);
-//		}
-//		
-//		if(desc != null) {
-//			repo.updateProjectDesc(id, desc);
-//		}
+		if(name.compareTo("")!=0 & desc.compareTo("")!=0) {
+			repo.updateProjectAll(id, name, desc);
+		}
+		
+		if(name.compareTo("")!=0 & desc.compareTo("")==0) {
+			repo.updateProjectName(id, name);
+		}
+		
+		if(name.compareTo("")==0 & desc.compareTo("")!=0) {
+			repo.updateProjectDesc(id, desc);
+		}
 	}
 
 	@Override

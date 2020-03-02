@@ -56,6 +56,11 @@ public class Servlet extends HttpServlet {
 		
 		prepareActions(req, res);
 		
+		String abc = "abc1";
+		String abc2= "abc2";
+		req.setAttribute("randomAtt", abc);
+		req.setAttribute("randomAtt2", abc2);
+		System.out.println("Servlet: "+req);
 		runAction(req.getParameter("action"));
 	}
 

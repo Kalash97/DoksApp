@@ -27,19 +27,25 @@ public class FindProjectsOfUserAction implements Action {
 	public void launch() {
 		SessionManager sm = new SessionManager(view.getReq());
 		HttpSession currentSesion = sm.getCurrentSesion();
-		System.out.println(currentSesion);
+		System.out.println("Session: "+currentSesion);
 		if (currentSesion == null) {
 			try {
+				System.out.println("View: "+view);
+				System.out.println("Response: "+view.getRes());
+				
+				
+
 				view.getRes().sendRedirect("ErrorPage.html");
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		} else {
 			Person person = (Person) currentSesion.getAttribute("newUser");
 			Long idLong = person.getId();
 			String id = idLong.toString();
-
+			String abc3= "abc3";
+			view.getReq().setAttribute("randomAtt3", abc3);
+			System.out.println("FindProjectsOfUser: "+view.getReq());
 			List<Persistable> list = repo.findProjectsOfUser(id);
 			for (Persistable p : list) {
 				System.out.println("Pou: " + p);

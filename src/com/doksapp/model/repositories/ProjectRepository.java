@@ -17,17 +17,17 @@ public class ProjectRepository {
 
 	private PersistanceManager pm;
 
-//	public Project updateProjectName(long id, String name) {
-//		return pm.updateProjectName(id, name);
-//	}
-//	
-//	public Project updateProjectDesc(long id, String desc) {
-//		return pm.updateProjectDesc(id, desc);	
-//	}
-//	
-//	public Project updateProjectAll(long id, String name, String desc) {
-//		return pm.updateProjectAll(id, name, desc);
-//	}
+	public Project updateProjectName(long id, String name) {
+		return pm.updateProjectName(id, name);
+	}
+	
+	public Project updateProjectDesc(long id, String desc) {
+		return pm.updateProjectDesc(id, desc);	
+	}
+	
+	public Project updateProjectAll(long id, String name, String desc) {
+		return pm.updateProjectAll(id, name, desc);
+	}
 
 	public Project createProject(Project project) {
 		return (Project) pm.create(project);

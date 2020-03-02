@@ -47,6 +47,24 @@ public class LoginAction implements Action{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
+		testSession();
+	}
+
+	private void testSession() {
+		System.out.println("Test Session");
+		SessionManager sm = new SessionManager(view.getReq());
+		HttpSession currentSesion = sm.getCurrentSesion();
+		System.out.println(currentSesion);
+		if(currentSesion!=null) {
+			System.out.println(currentSesion.getAttribute("newUser"));
+		}else {
+			try {
+				view.getRes().sendRedirect("ErrorPage.html");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 	@Override

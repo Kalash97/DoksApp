@@ -11,11 +11,11 @@
 </head>
 
 <body>
-
+	<img alt="DoksApp" src="documents1.png" width="200" height="200" class="image">
 	<div class="containerLogin">
 		<div class="innerDiv">
 			<div class="siteName">
-				<font size=4>Login Site</font>
+				<font size=4><i>Login Site</i></font>
 			</div>	
 	
 			<form action="traffic?action=Login" method="post">
@@ -29,7 +29,7 @@
 				<input type="text" name="Password"/>
 				<br>
 				<input type="submit" value="Login"/>
-				<div class="alignRight"><a href="traffic?action=Redirect&target=Register.jsp">Register</a></div>
+				<div class="alignRight"><a href="traffic?action=Redirect&target=Register.jsp" class="button">Register</a></div>
 			</form>
 		</div>
 	</div>
