@@ -2,6 +2,7 @@ package com.doksapp.model;
 
 import java.util.List;
 
+import com.doksapp.model.entities.Document;
 import com.doksapp.model.entities.Persistable;
 import com.doksapp.model.entities.Person;
 import com.doksapp.model.entities.Project;
@@ -25,4 +26,11 @@ public interface PersistanceManager {
 	public Person assignDocumentToUser(long idPerson, long idDoc);
 
 	public Project assignDocumentToProject(long idProject, long idDoc);
+
+	public Document updateDocName(long id, String name);
+
+	public Document updateDocDesc(long id, String content);
+
+	public Document updateDocAll(long id, String name, String content);
+
 }

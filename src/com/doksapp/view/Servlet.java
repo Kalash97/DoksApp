@@ -32,6 +32,7 @@ import com.doksapp.controller.actions.LoginAction;
 import com.doksapp.controller.actions.LogoutAction;
 import com.doksapp.controller.actions.RedirectAction;
 import com.doksapp.controller.actions.RegisterAction;
+import com.doksapp.controller.actions.UpdateDocumentAction;
 import com.doksapp.controller.actions.UpdateProjectAction;
 import com.doksapp.model.HibernatePersistanceManager;
 import com.doksapp.model.QuerySpec;
@@ -125,5 +126,7 @@ public class Servlet extends HttpServlet {
 		actions.add(adtp);
 		FindDocumentsOfProjectAction fdop = new FindDocumentsOfProjectAction(sv, dRep);
 		actions.add(fdop);
+		UpdateDocumentAction uda = new UpdateDocumentAction(sv, dRep);
+		actions.add(uda);
 	}
 }

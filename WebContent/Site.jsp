@@ -43,6 +43,7 @@
 		<c:out value="${randomAtt2}"/>
 		<c:out value="${randomAtt3}"/>
 			Temporary content <br> <a href="traffic?action=CreateProject">Create Project</a> <br> 
+			<a href="traffic?action=CreateDocument">Create Document</a>
 			
 			<form action="traffic?action=UpdateProject" method="post">
 				Project ID
@@ -52,6 +53,16 @@
 				description
 				<input type="text" name="projectDesc"/>	
 				<input type="submit" value="Update project"/>
+			</form>
+			
+			<form action="traffic?action=UpdateDocument" method="post">
+				Document ID
+				<input type="text" name="id"/>
+				name
+				<input type="text" name="projectName"/>
+				description
+				<input type="text" name="projectDesc"/>	
+				<input type="submit" value="Update document"/>
 			</form>
 			
 			<!--<c:if test="${fn:length(projects444) gt 0}">

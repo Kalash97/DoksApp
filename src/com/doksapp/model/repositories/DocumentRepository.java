@@ -21,6 +21,18 @@ public class DocumentRepository {
 	
 	private PersistanceManager pm;
 	
+	public Document updateDocName(long id, String name) {
+		return pm.updateDocName(id, name);
+	}
+	
+	public Document updateDocContent(long id, String content) {
+		return pm.updateDocDesc(id, content);	
+	}
+	
+	public Document updateDocAll(long id, String name, String content) {
+		return pm.updateDocAll(id, name, content);
+	}
+	
 	public Document createDocument(Document document) {
 		return (Document) pm.create(document);
 		

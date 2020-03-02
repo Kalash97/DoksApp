@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.doksapp.model.entities.AccountType;
-import com.doksapp.model.repositories.ProjectRepository;
+import com.doksapp.model.repositories.DocumentRepository;
 import com.doksapp.view.View;
 
 import lombok.AllArgsConstructor;
@@ -12,37 +12,38 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @AllArgsConstructor
-public class UpdateProjectAction implements Action{
+public class UpdateDocumentAction implements Action{
 
 	private View view;
-	private ProjectRepository repo;
+	private DocumentRepository repo;
 	
 	@Override
 	public void launch() {
 		long id = Long.parseLong(view.getId());
-		String name = view.getProjectName();
-		String desc = view.getProjectDesc();
+		String docName = view.getProjectName();
+		String docContent = view.getProjectDesc();
 		
-		if(name.compareTo("")!=0 & desc.compareTo("")!=0) {
-			repo.updateProjectAll(id, name, desc);
+		if(docName.compareTo("")!=0 & docContent.compareTo("")!=0) {
+			repo.updateDocAll(id, docName, docContent);
 		}
 		
-		if(name.compareTo("")!=0 & desc.compareTo("")==0) {
-			repo.updateProjectName(id, name);
+		if(docName.compareTo("")!=0 & docContent.compareTo("")==0) {
+			repo.updateDocName(id, docName);
 		}
 		
-		if(name.compareTo("")==0 & desc.compareTo("")!=0) {
-			repo.updateProjectDesc(id, desc);
+		if(docName.compareTo("")==0 & docContent.compareTo("")!=0) {
+			repo.updateDocContent(id, docContent);
 		}
 	}
 
 	@Override
 	public String getName() {
-		return "UpdateProject";
+		return "UpdateDocument";
 	}
 
+	@Override
 	public List<AccountType> getAllowedRoles() {
 		return Arrays.asList(new AccountType[]{AccountType.ADMIN, AccountType.MANAGER, AccountType.WORKER});
 	}
-	
+
 }

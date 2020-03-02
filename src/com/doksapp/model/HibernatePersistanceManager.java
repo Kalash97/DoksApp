@@ -58,6 +58,40 @@ public class HibernatePersistanceManager implements PersistanceManager {
 		em.close();
 		return project;
 	}
+	
+	@Override
+	public Document updateDocName(long id, String name) {
+		EntityManager em = HibernateConnection.getManager();
+		em.getTransaction().begin();		
+		Document document = em.find(Document.class, id);
+		document.setName(name);
+		em.getTransaction().commit();
+		em.close();
+		return document;
+	}
+
+	@Override
+	public Document updateDocDesc(long id, String content) {
+		EntityManager em = HibernateConnection.getManager();
+		em.getTransaction().begin();		
+		Document document = em.find(Document.class, id);
+		document.setContent(content);
+		em.getTransaction().commit();
+		em.close();
+		return document;
+	}
+
+	@Override
+	public Document updateDocAll(long id, String name, String content) {
+		EntityManager em = HibernateConnection.getManager();
+		em.getTransaction().begin();		
+		Document document = em.find(Document.class, id);
+		document.setName(name);
+		document.setContent(content);
+		em.getTransaction().commit();
+		em.close();
+		return document;
+	}
 
 	@Override
 	public Persistable create(Persistable persistable) {
@@ -181,6 +215,8 @@ public class HibernatePersistanceManager implements PersistanceManager {
 		em.close();
 		return project;
 	}
+
+	
 }
 
 //Class<?> resultType = qs.getResultType();
