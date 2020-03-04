@@ -13,7 +13,7 @@ import com.doksapp.controller.utils.SessionManager;
 import com.doksapp.model.entities.AccountType;
 import com.doksapp.model.entities.Persistable;
 import com.doksapp.model.entities.Person;
-import com.doksapp.model.repositories.ProjectRepository;
+import com.doksapp.model.repositories.DocumentRepository;
 import com.doksapp.view.ServletView;
 
 import lombok.AllArgsConstructor;
@@ -21,42 +21,42 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @AllArgsConstructor
-public class FindProjectsOfUserAction implements Action {
+public class FindDocumentsOfUserAction implements Action{
 
 	private ServletView view;
-	private ProjectRepository repo;
-
+	private DocumentRepository repo;
+	
 	@Override
 	public void launch() {
 		SessionManager sm = new SessionManager(view.getReq());
 		HttpSession currentSesion = sm.getCurrentSesion();
 		System.out.println("Session: "+currentSesion);
 		ServletViewUtility sv = new ServletViewUtility(view);
-
 		
-		if (currentSesion == null) {
-			try {
-				System.out.println("View: "+view);
-				System.out.println("Response: "+view.getRes());
-				
-				
+		
+		if (currentSesion==null) {
+			System.out.println("View: "+view);
+			System.out.println("Response: "+view.getRes());
+			
+			
 
-//				view.getRes().sendRedirect("ErrorPage.html");
+//			view.getRes().sendRedirect("ErrorPage.html");
+			try {
 				sv.forwardTo(ConstantsUtility.ERROR_PAGE);
-			} catch (IOException | ServletException e) {
+			} catch (ServletException | IOException e) {
 				e.printStackTrace();
 			}
-		} else {
+		}else {
 			Person person = (Person) currentSesion.getAttribute("newUser");
 			sv.attachUserToUI(person);
 			Long idLong = person.getId();
 			String id = idLong.toString();
-			System.out.println("FindProjectsOfUser: "+view.getReq());
-			List<Persistable> list = repo.findProjectsOfUser(id);
-			for (Persistable p : list) {
-				System.out.println("Pou: " + p);
+			System.out.println("FindDocumentsOfUser: "+view.getReq());
+			List<Persistable> list = repo.findDocumentsOfUser(id);
+			for(Persistable p : list) {
+				System.out.println("Dou: "+ p);
 			}
-			view.getReq().setAttribute("projects444", list);
+			view.getReq().setAttribute("document444", list);
 			try {
 //				view.getRes().sendRedirect("Site.jsp");
 				sv.forwardTo(ConstantsUtility.SITE);
@@ -68,9 +68,10 @@ public class FindProjectsOfUserAction implements Action {
 
 	@Override
 	public String getName() {
-		return "FindProjectsOfUser";
+		return "FindDocumentsOfUser";
 	}
 
+	@Override
 	public List<AccountType> getAllowedRoles() {
 		return Arrays.asList(new AccountType[] { AccountType.ADMIN, AccountType.MANAGER, AccountType.WORKER });
 	}

@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.doksapp.model.entities.AccountType;
 import com.doksapp.model.repositories.PersonRepository;
+import com.doksapp.view.View;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -13,12 +14,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class AssignUserToDocAction implements Action{
 
+	private View view;
 	private PersonRepository repo;
 	
 	@Override
 	public void launch() {
-		long idPerson=11;
-		long idDoc=16;
+		long idPerson = Long.parseLong(view.getId());
+		long idDoc = Long.parseLong(view.getTarget());
 		repo.assignDocumentToUser(idPerson, idDoc);
 	}
 

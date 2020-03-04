@@ -11,7 +11,7 @@
 	
 	<filter-mapping>
 		<filter-name>WebFilter</filter-name>
-		<url-pattern>/*</url-pattern>
+		<url-pattern>/traffic*</url-pattern>
 	</filter-mapping>
 	
 	<display-name>DoksApp</display-name>

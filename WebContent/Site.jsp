@@ -32,16 +32,13 @@
 			<div class="buttons">
 				<i class="fas fa-long-arrow-alt-right"></i><a href="traffic?action=Redirect&target=Site.jsp" class="buttonBig">Home</a> <br><br>
 				<i class="fas fa-long-arrow-alt-right"></i><a href="traffic?action=FindProjectsOfUser" class="buttonBig">Projects </a> <br><br>
-				<i class="fas fa-long-arrow-alt-right"></i>Documents <br><br>
-				<i class="fas fa-long-arrow-alt-right"></i>Admin Screen <br><br>
+				<i class="fas fa-long-arrow-alt-right"></i><a href="traffic?action=FindDocumentsOfUser" class="buttonBig">Documents </a> <br><br>
+				<i class="fas fa-long-arrow-alt-right"></i><a href="traffic?action=EnableAdmin" class="buttonBig">Admin Screen </a> <br><br>
 				<a href="traffic?action=Redirect&target=index.html">Index</a>
 			</div>
 		</div>
 
 		<div class="content">
-		<c:out value="${randomAtt}"/>
-		<c:out value="${randomAtt2}"/>
-		<c:out value="${randomAtt3}"/>
 			Temporary content <br> <a href="traffic?action=CreateProject">Create Project</a> <br> 
 			<a href="traffic?action=CreateDocument">Create Document</a>
 			
@@ -65,7 +62,7 @@
 				<input type="submit" value="Update document"/>
 			</form>
 			
-			<!--<c:if test="${fn:length(projects444) gt 0}">
+			<c:if test="${fn:length(projects444) gt 0}">
 			<table border="1">
 				<thead>
 					<tr>
@@ -86,9 +83,9 @@
 					</c:forEach>
 				</tbody>
 			</table>
-			</c:if>-->
+			</c:if>
 			
-			<table border="1">
+			<!--  <table border="1">
 				<thead>
 					<tr>
 						<th>id</th>
@@ -108,7 +105,7 @@
 						</tr>
 					</c:forEach>
 				</tbody>
-			</table>
+			</table>-->
 			<br /> <br />
 
 			<c:if test="${fn:length(document444) gt 0}">
@@ -134,6 +131,11 @@
 					</tbody>
 				</table>
 			</c:if>
+			
+			<c:if test="${admin}">
+				<h1>admin</h1>
+			</c:if>
+			
 		</div>
 	</div>
 </body>

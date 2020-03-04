@@ -19,15 +19,22 @@ import com.doksapp.model.entities.AccountType;
 import com.doksapp.model.entities.Person;
 import com.mysql.cj.x.protobuf.MysqlxCrud.Collection;
 
+//@javax.servlet.annotation.WebFilter
 public class WebFilter implements Filter {
 
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 
-		System.out.println("Filter is working!");
+		System.out.println("\n\nFilter is working!");
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;
+		
+		
+		System.out.println("---------------req:"+req+ "   res:"+res+" URL: "+req.getRequestURL().toString());
+		
+		
+		
 		String actionName = req.getParameter("action");
 		System.out.println("Action to be executed: " + actionName);
 		
@@ -36,6 +43,7 @@ public class WebFilter implements Filter {
 		/////////////////////
 		if(actionName == null) {
 			chain.doFilter(request, response);
+			System.out.println("go1");
 			return;
 		}
 		
@@ -49,6 +57,7 @@ public class WebFilter implements Filter {
 			
 			if(action.getAllowedRoles().equals(AccountType.getAllTypes())) {
 				chain.doFilter(request, response);
+				System.out.println("go2");
 				return;
 			}
 
@@ -63,9 +72,11 @@ public class WebFilter implements Filter {
 					//Action action = (Action) t.newInstance();
 					if (action.getAllowedRoles().contains(((Person) user).getAccountType())) {
 						chain.doFilter(request, response);
+						System.out.println("go3");
 						return;
 					} else {
 						res.sendRedirect(ConstantsUtility.ERROR_PAGE);
+						System.out.println("go4");
 						return;
 					}
 				}

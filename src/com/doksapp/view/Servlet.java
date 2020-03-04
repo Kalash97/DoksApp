@@ -22,10 +22,12 @@ import com.doksapp.controller.actions.CreateDocumentAction;
 import com.doksapp.controller.actions.CreateProjectAction;
 import com.doksapp.controller.actions.DeleteDocumentAction;
 import com.doksapp.controller.actions.DeleteProjectAction;
+import com.doksapp.controller.actions.EnableAdminAction;
 import com.doksapp.controller.actions.FindAllDocsAction;
 import com.doksapp.controller.actions.FindAllProjectsAction;
 import com.doksapp.controller.actions.FindDocByIdAction;
 import com.doksapp.controller.actions.FindDocumentsOfProjectAction;
+import com.doksapp.controller.actions.FindDocumentsOfUserAction;
 import com.doksapp.controller.actions.FindProjectByIdAction;
 import com.doksapp.controller.actions.FindProjectsOfUserAction;
 import com.doksapp.controller.actions.LoginAction;
@@ -54,13 +56,10 @@ public class Servlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		logger.info("Incoming Get Request");
+		System.out.println("---------------req:"+req+ "   res:"+res);
 		
 		prepareActions(req, res);
 		
-		String abc = "abc1";
-		String abc2= "abc2";
-		req.setAttribute("randomAtt", abc);
-		req.setAttribute("randomAtt2", abc2);
 		System.out.println("Servlet: "+req);
 		runAction(req.getParameter("action"));
 	}
@@ -87,46 +86,52 @@ public class Servlet extends HttpServlet {
 
 		HibernatePersistanceManager hpm = new HibernatePersistanceManager();
 		ProjectRepository pr = new ProjectRepository(hpm);
-		CreateProjectAction cpa = new CreateProjectAction(pr);
-		actions.add(cpa);
-		ServletView sv = new ServletView(req, res);
-		PersonRepository pRep = new PersonRepository(hpm);
-		RegisterAction ra = new RegisterAction(sv, pRep);
-		actions.add(ra);
-		DeleteProjectAction dp = new DeleteProjectAction(sv, pr);
-		actions.add(dp);
 		DocumentRepository dRep = new DocumentRepository(hpm);
+		PersonRepository pRep = new PersonRepository(hpm);
+		ServletView sv = new ServletView(req, res);
+		
+		CreateProjectAction cpa = new CreateProjectAction(pr);
+		RegisterAction ra = new RegisterAction(sv, pRep);
+		DeleteProjectAction dp = new DeleteProjectAction(sv, pr);
 		CreateDocumentAction cda = new CreateDocumentAction(dRep);
-		actions.add(cda);
 		UpdateProjectAction upa = new UpdateProjectAction(sv, pr);
-		actions.add(upa);
 		RedirectAction redirectA = new RedirectAction(sv);
-		actions.add(redirectA);
 		DeleteDocumentAction dda = new DeleteDocumentAction(sv, dRep);
-		actions.add(dda);
 		FindAllProjectsAction fap = new FindAllProjectsAction(sv, pr);
-		actions.add(fap);
 		FindProjectByIdAction fpbi = new FindProjectByIdAction(sv, pr);
-		actions.add(fpbi);
-		FindAllDocsAction fad = new FindAllDocsAction(sv, dRep); //do stestowania
-		actions.add(fad);
-		FindDocByIdAction fdbi = new FindDocByIdAction(sv, dRep); //do stestowania
-		actions.add(fdbi);
+		FindAllDocsAction fad = new FindAllDocsAction(sv, dRep); 
+		FindDocByIdAction fdbi = new FindDocByIdAction(sv, dRep);
 		LoginAction la = new LoginAction(sv, pRep);
-		actions.add(la);
 		AssignUserToProjectAction autp = new AssignUserToProjectAction(sv, pRep);
-		actions.add(autp);
-		AssignUserToDocAction autd = new AssignUserToDocAction(pRep);
-		actions.add(autd);
+		AssignUserToDocAction autd = new AssignUserToDocAction(sv,pRep);
 		LogoutAction logoutAction = new LogoutAction(sv);
-		actions.add(logoutAction);
 		FindProjectsOfUserAction fpou = new FindProjectsOfUserAction(sv, pr);
-		actions.add(fpou);
 		AssignDocumentToProjectAction adtp = new AssignDocumentToProjectAction(sv,pr);
-		actions.add(adtp);
 		FindDocumentsOfProjectAction fdop = new FindDocumentsOfProjectAction(sv, dRep);
-		actions.add(fdop);
 		UpdateDocumentAction uda = new UpdateDocumentAction(sv, dRep);
+		EnableAdminAction eaa = new EnableAdminAction(sv);
+		FindDocumentsOfUserAction fdou = new FindDocumentsOfUserAction(sv,dRep);
+		
+		actions.add(fdou);
+		actions.add(cda);
+		actions.add(ra);
+		actions.add(dp);
+		actions.add(cpa);
+		actions.add(upa);
+		actions.add(dda);
+		actions.add(redirectA);
+		actions.add(fap);
+		actions.add(la);
+		actions.add(fpbi);
+		actions.add(fdbi);
+		actions.add(fad);
+		actions.add(autp);
+		actions.add(autd);
+		actions.add(logoutAction);
+		actions.add(fpou);
+		actions.add(adtp);
+		actions.add(fdop);
 		actions.add(uda);
+		actions.add(eaa);
 	}
 }

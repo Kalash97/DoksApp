@@ -7,6 +7,8 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpSession;
 
+import com.doksapp.controller.utils.ConstantsUtility;
+import com.doksapp.controller.utils.ServletViewUtility;
 import com.doksapp.controller.utils.SessionManager;
 import com.doksapp.model.entities.AccountType;
 import com.doksapp.model.entities.Person;
@@ -18,52 +20,54 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @AllArgsConstructor
-public class LoginAction implements Action{
+public class LoginAction implements Action {
 
 	private ServletView view;
 	private PersonRepository repo;
 
 	@Override
 	public void launch() {
-		String login = view.getLogin();
-		String password = view.getPassword();
-		Person p = repo.findPersonByLoginAndPassword(login, password);
-		if(p!=null) {
-			view.getReq().setAttribute("username", p.getName()+" "+p.getLastName());
-			
+		ServletViewUtility sv = new ServletViewUtility(view);
+		Person p = repo.findPersonByLoginAndPassword(view.getLogin(), view.getPassword());
+		
+		if (p != null) {
+			sv.attachUserToUI(p);
+
 			SessionManager sm = new SessionManager(view.getReq());
-			HttpSession session= sm.createSesion();
+			HttpSession session = sm.createSesion();
 			session.setAttribute("newUser", p);
 
-			session=null;
-			session=sm.getCurrentSesion();
-			System.out.println("Sesja na loginAction"+session);
-		    System.out.println("Na LoginAction: "+session.getAttribute("newUser"));
+			session = null;
+			session = sm.getCurrentSesion();
+			System.out.println("Sesja na loginAction" + session);
+			System.out.println("Na LoginAction: " + session.getAttribute("newUser"));
+
+			testSession();
+			try {
+				sv.forwardTo(ConstantsUtility.SITE);
+				return;
+			} catch (ServletException | IOException e) {
+				e.printStackTrace();
+			}
+		} else {
+			try {
+				view.getReq().setAttribute("failed", true);
+				sv.forwardTo(ConstantsUtility.LOGIN);
+				return;
+			} catch (ServletException | IOException e) {
+				e.printStackTrace();
+			}
 		}
-		try {
-			view.getReq().getRequestDispatcher("Site.jsp").forward(view.getReq(), view.getRes());
-		} catch (ServletException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		testSession();
+
 	}
 
 	private void testSession() {
-		System.out.println("Test Session");
+		System.out.println("------------------------------------------------Test Session");
 		SessionManager sm = new SessionManager(view.getReq());
 		HttpSession currentSesion = sm.getCurrentSesion();
 		System.out.println(currentSesion);
-		if(currentSesion!=null) {
+		if (currentSesion != null) {
 			System.out.println(currentSesion.getAttribute("newUser"));
-		}else {
-			try {
-				view.getRes().sendRedirect("ErrorPage.html");
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
 		}
 	}
 
@@ -73,7 +77,7 @@ public class LoginAction implements Action{
 	}
 
 	public List<AccountType> getAllowedRoles() {
-		return Arrays.asList(new AccountType[]{AccountType.ADMIN, AccountType.MANAGER, AccountType.WORKER});
+		return Arrays.asList(new AccountType[] { AccountType.ADMIN, AccountType.MANAGER, AccountType.WORKER });
 	}
-	
+
 }

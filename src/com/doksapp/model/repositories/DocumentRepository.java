@@ -61,4 +61,11 @@ public class DocumentRepository {
 		qs.addToList(new SearchCondition(Document.class, OperationType.MEMBEROF, Project.class, "documents"));
 		return pm.read(qs);
 	}
+
+	public List<Persistable> findDocumentsOfUser(String id) {
+		QuerySpec qs = new QuerySpec(Document.class);
+		qs.addToList(new SearchCondition(Person.class, "id", OperationType.EQUALS, id));
+		qs.addToList(new SearchCondition(Document.class, OperationType.MEMBEROF, Person.class, "documents"));
+		return pm.read(qs);
+	}
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,6 +33,9 @@
 				<div class="alignRight"><a href="traffic?action=Redirect&target=Register.jsp" class="button">Register</a></div>
 			</form>
 		</div>
+		<c:if test="failed">
+			<h3>INVALID CREDENTIALS</h3>
+		</c:if>
 	</div>
 	
 	<a href="traffic?action=Redirect&target=index.html">Index</a>
