@@ -20,7 +20,7 @@
 }
 
 .header {
-	width: 1366px;
+	width: 1440px;
     height: 50px;
     border-style: groove;
     border-radius: 10px;
@@ -29,7 +29,7 @@
 .toolbar {
 	float: left;
 	width: 20%;
-	height: 713px;
+	height: 850px;
 	border-style: groove;
 	text-align: center;
 	color: white;
@@ -50,13 +50,13 @@
 
 .content {
 	width: 100%;
-	height: 713px;
+	height: 850px;
 	border-style: groove;
 }
 
 .containerSite {
-	width: 1366px;
-	height: 713px;
+	width: 1440px;
+	height: 850px;
 	margin-top: 5px;
 }
 

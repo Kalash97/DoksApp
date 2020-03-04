@@ -52,7 +52,11 @@ public class DocumentRepository {
 		qs.addToList(new SearchCondition(Document.class, "id", OperationType.EQUALS, id));
 		List<Persistable> results = pm.read(qs);
 		
-		return results.get(0);
+		if(results.size()>0) {
+			return results.get(0);
+		}else {
+			return null;
+		}
 	}
 
 	public List<Persistable> findDocumentsOfProject(String id) {

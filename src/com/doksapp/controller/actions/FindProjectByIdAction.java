@@ -1,10 +1,14 @@
 package com.doksapp.controller.actions;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpSession;
 
+import com.doksapp.controller.utils.ConstantsUtility;
+import com.doksapp.controller.utils.ServletViewUtility;
 import com.doksapp.controller.utils.SessionManager;
 import com.doksapp.model.OperationType;
 import com.doksapp.model.QuerySpec;
@@ -31,12 +35,27 @@ public class FindProjectByIdAction implements Action{
 		String id = view.getId();
 		Persistable readProjectsById = repo.readProjectsById(id);
 		System.out.println(readProjectsById);
-		SessionManager sm = new SessionManager(view.getReq());
-		HttpSession currentSesion = sm.getCurrentSesion();
-		if(currentSesion!=null) {
-		String test = (String) currentSesion.getAttribute("TEST");
-		System.out.println(test);
+		ServletViewUtility sv = new ServletViewUtility(view);
+		Project project = (Project) readProjectsById;
+		
+		view.getReq().setAttribute("Project111","Name: " + project.getName()+" Desc: "+ project.getDescription());
+		try {
+//			view.getRes().sendRedirect("Site.jsp");
+			sv.forwardTo(ConstantsUtility.SITE);
+		} catch (IOException | ServletException e) {
+			e.printStackTrace();
 		}
+		
+		
+		
+		
+		
+//		SessionManager sm = new SessionManager(view.getReq());
+//		HttpSession currentSesion = sm.getCurrentSesion();
+//		if(currentSesion!=null) {
+//			String test = (String) currentSesion.getAttribute("TEST");
+//		System.out.println(test);
+//		}
 	}
 
 	@Override

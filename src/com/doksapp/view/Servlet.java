@@ -90,10 +90,10 @@ public class Servlet extends HttpServlet {
 		PersonRepository pRep = new PersonRepository(hpm);
 		ServletView sv = new ServletView(req, res);
 		
-		CreateProjectAction cpa = new CreateProjectAction(pr);
+		CreateProjectAction cpa = new CreateProjectAction(sv,pr);
 		RegisterAction ra = new RegisterAction(sv, pRep);
 		DeleteProjectAction dp = new DeleteProjectAction(sv, pr);
-		CreateDocumentAction cda = new CreateDocumentAction(dRep);
+		CreateDocumentAction cda = new CreateDocumentAction(sv,dRep);
 		UpdateProjectAction upa = new UpdateProjectAction(sv, pr);
 		RedirectAction redirectA = new RedirectAction(sv);
 		DeleteDocumentAction dda = new DeleteDocumentAction(sv, dRep);

@@ -7,6 +7,8 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpSession;
 
+import com.doksapp.controller.utils.ConstantsUtility;
+import com.doksapp.controller.utils.ServletViewUtility;
 import com.doksapp.controller.utils.SessionManager;
 import com.doksapp.model.entities.AccountType;
 import com.doksapp.model.entities.Persistable;
@@ -29,6 +31,7 @@ public class FindAllProjectsAction implements Action {
 		List<Persistable> readAllProjects = repo.readAllProjects();
 		System.out.println(readAllProjects.size());
 		view.getReq().setAttribute("projects555", readAllProjects);
+		ServletViewUtility sv = new ServletViewUtility(view);
 		
 //		SessionManager sm = new SessionManager(view.getReq());
 //		HttpSession session= sm.createSesion();
@@ -43,7 +46,8 @@ public class FindAllProjectsAction implements Action {
 //	    System.out.println("Na FindAllProjectsAction: "+session.getAttribute("TEST"));
 //		
 		try {
-			view.getReq().getRequestDispatcher("Site.jsp").forward(view.getReq(), view.getRes());
+			//view.getReq().getRequestDispatcher("Site.jsp").forward(view.getReq(), view.getRes());
+			sv.forwardTo(ConstantsUtility.SITE);
 		} catch (ServletException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

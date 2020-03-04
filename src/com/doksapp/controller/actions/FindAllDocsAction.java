@@ -25,7 +25,7 @@ public class FindAllDocsAction implements Action {
 	public void launch() {
 		List<Persistable> readAllDocs = repo.readAllDocumnets();
 		System.out.println("dokumenty: "+readAllDocs.size());
-		view.getReq().setAttribute("document444", readAllDocs);
+		view.getReq().setAttribute("document123", readAllDocs);
 
 		try {
 			view.getReq().getRequestDispatcher("Site.jsp").forward(view.getReq(), view.getRes());
