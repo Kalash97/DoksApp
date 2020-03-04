@@ -23,6 +23,8 @@ import com.doksapp.controller.actions.CreateProjectAction;
 import com.doksapp.controller.actions.DeleteDocumentAction;
 import com.doksapp.controller.actions.DeleteProjectAction;
 import com.doksapp.controller.actions.EnableAdminAction;
+import com.doksapp.controller.actions.EnableDocumentsAction;
+import com.doksapp.controller.actions.EnableProjectsAction;
 import com.doksapp.controller.actions.FindAllDocsAction;
 import com.doksapp.controller.actions.FindAllProjectsAction;
 import com.doksapp.controller.actions.FindDocByIdAction;
@@ -111,7 +113,11 @@ public class Servlet extends HttpServlet {
 		UpdateDocumentAction uda = new UpdateDocumentAction(sv, dRep);
 		EnableAdminAction eaa = new EnableAdminAction(sv);
 		FindDocumentsOfUserAction fdou = new FindDocumentsOfUserAction(sv,dRep);
+		EnableProjectsAction epa = new EnableProjectsAction(sv);
+		EnableDocumentsAction eda = new EnableDocumentsAction(sv);
 		
+		actions.add(eda);
+		actions.add(epa);
 		actions.add(fdou);
 		actions.add(cda);
 		actions.add(ra);

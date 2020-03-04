@@ -9,41 +9,23 @@ import javax.servlet.ServletException;
 import com.doksapp.controller.utils.ConstantsUtility;
 import com.doksapp.controller.utils.ServletViewUtility;
 import com.doksapp.model.entities.AccountType;
-import com.doksapp.model.repositories.ProjectRepository;
 import com.doksapp.view.ServletView;
-import com.doksapp.view.View;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @AllArgsConstructor
-public class UpdateProjectAction implements Action{
+public class EnableDocumentsAction implements Action{
 
-	private ServletView view;
-	private ProjectRepository repo;
+	private ServletView sv;
 	
 	@Override
 	public void launch() {
-		ServletViewUtility sv = new ServletViewUtility(view);
-		long id = Long.parseLong(view.getId());
-		String name = view.getProjectName();
-		String desc = view.getProjectDesc();
-		
-		if(name.compareTo("")!=0 & desc.compareTo("")!=0) {
-			repo.updateProjectAll(id, name, desc);
-		}
-		
-		if(name.compareTo("")!=0 & desc.compareTo("")==0) {
-			repo.updateProjectName(id, name);
-		}
-		
-		if(name.compareTo("")==0 & desc.compareTo("")!=0) {
-			repo.updateProjectDesc(id, desc);
-		}
-		
+		sv.getReq().setAttribute("documentsEnable", true);
+		ServletViewUtility svu = new ServletViewUtility(sv);
 		try {
-			sv.forwardTo(ConstantsUtility.SITE_PROJECTS);
+			svu.forwardTo(ConstantsUtility.SITE);
 		} catch (ServletException | IOException e) {
 			e.printStackTrace();
 		}
@@ -51,9 +33,10 @@ public class UpdateProjectAction implements Action{
 
 	@Override
 	public String getName() {
-		return "UpdateProject";
+		return "EnableDocuments";
 	}
 
+	@Override
 	public List<AccountType> getAllowedRoles() {
 		return Arrays.asList(new AccountType[]{AccountType.ADMIN, AccountType.MANAGER, AccountType.WORKER});
 	}

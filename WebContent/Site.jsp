@@ -32,7 +32,9 @@
 			<div class="buttons">
 				<i class="fas fa-long-arrow-alt-right"></i><a href="traffic?action=Redirect&target=Site.jsp" class="buttonBig">Home</a> <br><br>
 				<i class="fas fa-long-arrow-alt-right"></i><a href="traffic?action=FindProjectsOfUser" class="buttonBig">Projects </a> <br><br>
+				<i class="fas fa-long-arrow-alt-right"></i><a href="traffic?action=EnableProjects" class="buttonBig">ENABLE PROJECTS</a> <br><br>
 				<i class="fas fa-long-arrow-alt-right"></i><a href="traffic?action=FindDocumentsOfUser" class="buttonBig">Documents </a> <br><br>
+				<i class="fas fa-long-arrow-alt-right"></i><a href="traffic?action=EnableDocuments" class="buttonBig">ENABLE DOCUMENTS</a> <br><br>
 				<i class="fas fa-long-arrow-alt-right"></i><a href="traffic?action=EnableAdmin" class="buttonBig">Admin Screen </a> <br><br>
 				<a href="traffic?action=Redirect&target=index.html">Index</a>
 			</div>
@@ -43,31 +45,11 @@
 				
 			<br>
 			<br>
-			<form action="traffic?action=CreateProject" method="post">
-				Create project<br>
-				Project name
-				<input type="text" name="projectName"/><br>
-				Project description
-				<input type="text" name="projectDesc"/><br>
-				<input type="submit" value="Create project"/>
-				<br>
-				<br>
-				<br>
-			</form>
+			
 			
 			<br>
 			<br>
-			<form action="traffic?action=CreateDocument" method="post">
-				Create document<br>
-				Document name
-				<input type="text" name="projectName"/><br>
-				Document content
-				<input type="text" name="projectDesc"/><br>
-				<input type="submit" value="Create document"/>
-				<br>
-				<br>
-				<br>
-			</form>
+			
 			
 			<br>
 			<br>
@@ -91,26 +73,10 @@
 			<br>
 			<br>
 			
-			<form action="traffic?action=UpdateProject" method="post">
-				Project ID
-				<input type="text" name="id"/>
-				name
-				<input type="text" name="projectName"/>
-				description
-				<input type="text" name="projectDesc"/>	
-				<input type="submit" value="Update project"/>
-			</form>
+			
 			<br>
 			<br>
-			<form action="traffic?action=UpdateDocument" method="post">
-				Document ID
-				<input type="text" name="id"/>
-				name
-				<input type="text" name="projectName"/>
-				description
-				<input type="text" name="projectDesc"/>	
-				<input type="submit" value="Update document"/>
-			</form>
+			
 			<br>
 			<br>
 			<form action="traffic?action=FindDocumentsOfProject" method="post">
@@ -140,28 +106,7 @@
 				</table>
 			</c:if>
 			
-			<c:if test="${fn:length(projects444) gt 0}">
-			<table border="1">
-				<thead>
-					<tr>
-						<th>id</th>
-						<th>name</th>
-						<th>description</th>
-						<th>delete</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach items="${projects444}" var="p44">
-						<tr>
-							<td>${p44.id}</td>
-							<td>${p44.name}</td>
-							<td>${p44.description}</td>
-							<td><a href="<c:url value = "traffic?action=DeleteProject&id=${p44.id}"/>"><i class="fas fa-trash-alt"></i></a></td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-			</c:if>
+			
 			
 			<!--  <table border="1">
 				<thead>
@@ -186,54 +131,9 @@
 			</table>-->
 			<br /> <br />
 
-			<c:if test="${fn:length(document444) gt 0}">
-				<table border="1">
-					<thead>
-						<tr>
-							<th>id</th>
-							<th>name</th>
-							<th>content</th>
-							<th>delete</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach items="${document444}" var="d66">
-							<tr>
-								<td>${d66.id}</td>
-								<td>${d66.name}</td>
-								<td>${d66.content}</td>
-								<td><a
-									href="<c:url value = "traffic?action=DeleteDocument&id=${d66.id}"/>"><i class="fas fa-trash-alt"></i></a></td>
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-			</c:if>
 			
-			<a href="traffic?action=FindAllProjects">Find all projects</a>
-			<c:if test="${fn:length(projects555) gt 0}">
-				<table border="1">
-					<thead>
-						<tr>
-							<th>id</th>
-							<th>name</th>
-							<th>description</th>
-							<th>delete</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach items="${projects555}" var="d55">
-							<tr>
-								<td>${d55.id}</td>
-								<td>${d55.name}</td>
-								<td>${d55.description}</td>
-								<td><a
-									href="<c:url value = "traffic?action=DeleteProject&id=${d55.id}"/>"><i class="fas fa-trash-alt"></i></a></td>
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-			</c:if>
+			
+			
 			<br>
 			<a href="traffic?action=FindAllDocs">Find all documents</a>
 			<c:if test="${fn:length(document123) gt 0}">
@@ -283,6 +183,134 @@
 				</table>
 			</c:if>-->
 			
+			
+			
+			
+			
+			
+			
+			<c:if test="${projectsEnable}">
+			
+				<i class="fas fa-long-arrow-alt-right"></i><a href="traffic?action=FindProjectsOfUser" class="buttonBig">Find projects of user </a> <br><br>
+			
+				<form action="traffic?action=CreateProject" method="post">
+					Create project<br>
+					Project name
+					<input type="text" name="projectName"/><br>
+					Project description
+					<input type="text" name="projectDesc"/><br>
+					<input type="submit" value="Create project"/>
+				</form>
+
+					<br>
+					<br>
+					<br>
+				
+				<form action="traffic?action=UpdateProject" method="post">
+					Project ID
+					<input type="text" name="id"/>
+					name
+					<input type="text" name="projectName"/>
+					description
+					<input type="text" name="projectDesc"/>	
+					<input type="submit" value="Update project"/>
+				</form>
+				
+				<br>
+				
+				<c:if test="${fn:length(projects444) gt 0}">
+					<table border="1">
+						<thead>
+							<tr>
+								<th>id</th>
+								<th>name</th>
+								<th>description</th>
+								<th>delete</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach items="${projects444}" var="p44">
+								<tr>
+									<td>${p44.id}</td>
+									<td>${p44.name}</td>
+									<td>${p44.description}</td>
+									<td><a href="<c:url value = "traffic?action=DeleteProject&id=${p44.id}"/>"><i class="fas fa-trash-alt"></i></a></td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+					</c:if>
+				<br>	
+			
+			</c:if>
+			
+			
+			
+			
+			
+			
+			
+			<c:if test="${documentsEnable}">
+				
+				<form action="traffic?action=CreateDocument" method="post">
+					Create document<br>
+					Document name
+					<input type="text" name="projectName"/><br>
+					Document content
+					<input type="text" name="projectDesc"/><br>
+					<input type="submit" value="Create document"/>
+				</form>
+					
+					<br>
+					<br>
+					<br>
+				
+				<form action="traffic?action=UpdateDocument" method="post">
+					Document ID
+					<input type="text" name="id"/>
+					name
+					<input type="text" name="projectName"/>
+					description
+					<input type="text" name="projectDesc"/>	
+					<input type="submit" value="Update document"/>
+				</form>
+				
+				<br>
+				
+				<i class="fas fa-long-arrow-alt-right"></i><a href="traffic?action=FindDocumentsOfUser" class="buttonBig">Find documents of user</a> <br><br>
+				<c:if test="${fn:length(document444) gt 0}">
+				<table border="1">
+					<thead>
+						<tr>
+							<th>id</th>
+							<th>name</th>
+							<th>content</th>
+							<th>delete</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach items="${document444}" var="d66">
+							<tr>
+								<td>${d66.id}</td>
+								<td>${d66.name}</td>
+								<td>${d66.content}</td>
+								<td><a
+									href="<c:url value = "traffic?action=DeleteDocument&id=${d66.id}"/>"><i class="fas fa-trash-alt"></i></a></td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</c:if>
+				
+			</c:if>
+			
+			
+			
+			
+			
+			
+			
+			
 			<c:if test="${admin}">
 				<h1>admin</h1>
 				<form action="traffic?action=AssignUserToProject" method="post">
@@ -310,20 +338,42 @@
 					<input type="submit" value="Assign"/>
 				</form>
 				<form action="traffic?action=AssignDocumentToProject" method="post">
-				Assign documnet to project
-				<br>
-				Project ID
-				<input type="text" name="id"/>
-				<br>
-				Document ID
-				<input type="text" name="Name"/>
-				<br>
-				<input type="submit" value="Assign"/>
+					Assign documnet to project
+					<br>
+					Project ID
+					<input type="text" name="id"/>
+					<br>
+					Document ID
+					<input type="text" name="Name"/>
+					<br>
+					<input type="submit" value="Assign"/>
 				</form>
-			</c:if>
-			
-			
-			
+				
+				<a href="traffic?action=FindAllProjects">Find all projects</a>
+				<c:if test="${fn:length(projects555) gt 0}">
+					<table border="1">
+						<thead>
+							<tr>
+								<th>id</th>
+								<th>name</th>
+								<th>description</th>
+								<th>delete</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach items="${projects555}" var="d55">
+								<tr>
+									<td>${d55.id}</td>
+									<td>${d55.name}</td>
+									<td>${d55.description}</td>
+									<td><a
+										href="<c:url value = "traffic?action=DeleteProject&id=${d55.id}"/>"><i class="fas fa-trash-alt"></i></a></td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</c:if>
+			</c:if>	
 		</div>
 	</div>
 </body>

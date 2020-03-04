@@ -41,7 +41,7 @@ public class CreateProjectAction implements Action {
 		logger.info("Project has been created: " + "Name: " + p.getName());
 		
 		try {
-			sv.forwardTo(ConstantsUtility.SITE);
+			sv.forwardTo(ConstantsUtility.SITE_PROJECTS);
 		} catch (ServletException | IOException e) {
 			e.printStackTrace();
 		}

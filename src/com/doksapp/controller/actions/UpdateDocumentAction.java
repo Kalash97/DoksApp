@@ -1,10 +1,16 @@
 package com.doksapp.controller.actions;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.servlet.ServletException;
+
+import com.doksapp.controller.utils.ConstantsUtility;
+import com.doksapp.controller.utils.ServletViewUtility;
 import com.doksapp.model.entities.AccountType;
 import com.doksapp.model.repositories.DocumentRepository;
+import com.doksapp.view.ServletView;
 import com.doksapp.view.View;
 
 import lombok.AllArgsConstructor;
@@ -14,11 +20,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class UpdateDocumentAction implements Action{
 
-	private View view;
+	private ServletView view;
 	private DocumentRepository repo;
 	
 	@Override
 	public void launch() {
+		ServletViewUtility sv = new ServletViewUtility(view);
 		long id = Long.parseLong(view.getId());
 		String docName = view.getProjectName();
 		String docContent = view.getProjectDesc();
@@ -33,6 +40,12 @@ public class UpdateDocumentAction implements Action{
 		
 		if(docName.compareTo("")==0 & docContent.compareTo("")!=0) {
 			repo.updateDocContent(id, docContent);
+		}
+		
+		try {
+			sv.forwardTo(ConstantsUtility.SITE_DOCUMENTS);
+		} catch (ServletException | IOException e) {
+			e.printStackTrace();
 		}
 	}
 

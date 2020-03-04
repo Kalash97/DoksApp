@@ -47,7 +47,7 @@ public class FindAllProjectsAction implements Action {
 //		
 		try {
 			//view.getReq().getRequestDispatcher("Site.jsp").forward(view.getReq(), view.getRes());
-			sv.forwardTo(ConstantsUtility.SITE);
+			sv.forwardTo(ConstantsUtility.SITE_PROJECTS);
 		} catch (ServletException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

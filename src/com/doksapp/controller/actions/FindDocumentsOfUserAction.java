@@ -59,7 +59,7 @@ public class FindDocumentsOfUserAction implements Action{
 			view.getReq().setAttribute("document444", list);
 			try {
 //				view.getRes().sendRedirect("Site.jsp");
-				sv.forwardTo(ConstantsUtility.SITE);
+				sv.forwardTo(ConstantsUtility.SITE_DOCUMENTS);
 			} catch (IOException | ServletException e) {
 				e.printStackTrace();
 			}

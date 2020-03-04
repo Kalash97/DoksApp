@@ -59,7 +59,7 @@ public class FindProjectsOfUserAction implements Action {
 			view.getReq().setAttribute("projects444", list);
 			try {
 //				view.getRes().sendRedirect("Site.jsp");
-				sv.forwardTo(ConstantsUtility.SITE);
+				sv.forwardTo(ConstantsUtility.SITE_PROJECTS);
 			} catch (IOException | ServletException e) {
 				e.printStackTrace();
 			}

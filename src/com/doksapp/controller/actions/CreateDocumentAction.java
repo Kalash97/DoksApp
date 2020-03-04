@@ -41,7 +41,7 @@ public class CreateDocumentAction implements Action{
 		
 		logger.info("Document has been created: " + "Name: " + d.getName());
 		try {
-			sv.forwardTo(ConstantsUtility.SITE);
+			sv.forwardTo(ConstantsUtility.SITE_DOCUMENTS);
 		} catch (ServletException | IOException e) {
 			e.printStackTrace();
 		}
