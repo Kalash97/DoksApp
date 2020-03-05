@@ -43,6 +43,8 @@ public class UpdateDocumentAction implements Action{
 		}
 		
 		try {
+//			view.getRes().sendRedirect(ConstantsUtility.SITE_DOCUMENTS);
+
 			sv.forwardTo(ConstantsUtility.SITE_DOCUMENTS);
 		} catch (ServletException | IOException e) {
 			e.printStackTrace();

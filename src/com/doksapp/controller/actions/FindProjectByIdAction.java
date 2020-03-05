@@ -41,6 +41,8 @@ public class FindProjectByIdAction implements Action{
 		view.getReq().setAttribute("Project111","Name: " + project.getName()+" Desc: "+ project.getDescription());
 		try {
 //			view.getRes().sendRedirect("Site.jsp");
+//			view.getRes().sendRedirect(ConstantsUtility.SITE);
+
 			sv.forwardTo(ConstantsUtility.SITE);
 		} catch (IOException | ServletException e) {
 			e.printStackTrace();

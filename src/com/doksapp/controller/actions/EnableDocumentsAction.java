@@ -25,6 +25,8 @@ public class EnableDocumentsAction implements Action{
 		sv.getReq().setAttribute("documentsEnable", true);
 		ServletViewUtility svu = new ServletViewUtility(sv);
 		try {
+//			sv.getRes().sendRedirect(ConstantsUtility.SITE);
+
 			svu.forwardTo(ConstantsUtility.SITE);
 		} catch (ServletException | IOException e) {
 			e.printStackTrace();

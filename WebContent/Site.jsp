@@ -45,12 +45,36 @@
 				
 			<br>
 			<br>
-			
+			<form action="traffic?action=RemoveDocumentFromProject" method="get">
+				RemoveDocFromProject<br>
+				<input type="hidden" name="action" value="RemoveDocumentFromProject"/>
+				Project id
+				<input type="text" name="id"/><br>
+				Doc id
+				<input type="text" name="target"/><br>
+				<input type="submit" value="Delete"/>
+			</form>
 			
 			<br>
+			<form action="traffic?action=RemoveProjectFromUser" method="get">
+				RemoveProjFromUser<br>
+				<input type="hidden" name="action" value="RemoveProjectFromUser"/>
+				User Id
+				<input type="text" name="id"/><br>
+				Project id
+				<input type="text" name="target"/><br>
+				<input type="submit" value="Delete"/>
+			</form>
 			<br>
-			
-			
+			<form action="traffic?action=RemoveDocumentFromUser" method="get">
+				RemoveDocFromUser<br>
+				<input type="hidden" name="action" value="RemoveDocumentFromUser"/>
+				User Id
+				<input type="text" name="id"/><br>
+				Document Id
+				<input type="text" name="target"/><br>
+				<input type="submit" value="Delete"/>
+			</form>
 			<br>
 			<br>
 			<form action="traffic?action=FindProjectById" method="post">

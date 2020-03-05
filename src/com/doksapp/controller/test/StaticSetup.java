@@ -10,6 +10,7 @@ import com.doksapp.model.HibernateConnection;
 import com.doksapp.model.HibernatePersistanceManager;
 import com.doksapp.model.entities.AccountType;
 import com.doksapp.model.entities.Document;
+import com.doksapp.model.entities.Persistable;
 import com.doksapp.model.entities.Person;
 import com.doksapp.model.entities.Project;
 import com.doksapp.model.repositories.PersonRepository;
@@ -22,6 +23,7 @@ public class StaticSetup {
 		//createManager();
 		//createWorker();
 		//createDoc();
+		//test();
 	}
 	
 	private static void createTestData() {
@@ -91,6 +93,21 @@ public class StaticSetup {
 		EntityManager em = HibernateConnection.getManager();
 		em.getTransaction().begin();
 		em.persist(doc);
+		em.getTransaction().commit();
+		em.close();
+	}
+	
+	private static void test() {
+		EntityManager em = HibernateConnection.getManager();
+		em.getTransaction().begin();
+		Persistable persistable = (Persistable) em.find(Project.class, 19L);
+		Person p = em.find(Person.class, 2L);
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Projects of user: "+p.getProjects());
+		p.getProjects().remove(persistable);
+		em.remove(persistable);
+		// dobre miejsce na loggera
+//		em.flush();
+//		em.clear();
 		em.getTransaction().commit();
 		em.close();
 	}

@@ -30,6 +30,8 @@ public class DeleteDocumentAction implements Action {
 		repo.deleteDocument(id);
 		
 		try {
+//			view.getRes().sendRedirect(ConstantsUtility.SITE_DOCUMENTS);
+
 			sv.forwardTo(ConstantsUtility.SITE_DOCUMENTS);
 		} catch (ServletException | IOException e) {
 			e.printStackTrace();

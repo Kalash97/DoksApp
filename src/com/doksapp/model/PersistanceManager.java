@@ -33,4 +33,10 @@ public interface PersistanceManager {
 
 	public Document updateDocAll(long id, String name, String content);
 
+	public void removeDocumentFromProject(long idProject, long idDoc);
+
+	public void removeProjectFromUser(long idPerson, long idProject);
+
+	public void removeDocumentFromUser(long idPerson, long idDoc);
+
 }

@@ -35,7 +35,8 @@ public class FindDocByIdAction implements Action{
 		
 		view.getReq().setAttribute("Documnet123", "Name: "+doc.getName()+" Content: "+ doc.getContent());
 		try {
-//			view.getRes().sendRedirect("Site.jsp");
+//			view.getRes().sendRedirect(ConstantsUtility.SITE);
+
 			sv.forwardTo(ConstantsUtility.SITE);
 		} catch (IOException | ServletException e) {
 			e.printStackTrace();

@@ -37,6 +37,8 @@ public class FindDocumentsOfProjectAction implements Action {
 			System.out.println("View: " + view);
 			System.out.println("Response: " + view.getRes());
 			try {
+//				view.getRes().sendRedirect(ConstantsUtility.ERROR_PAGE);
+
 				sv.forwardTo(ConstantsUtility.ERROR_PAGE);
 			} catch (ServletException | IOException e) {
 				e.printStackTrace();
@@ -49,6 +51,8 @@ public class FindDocumentsOfProjectAction implements Action {
 			}
 			view.getReq().setAttribute("documentsOfProject123", list);
 			try {
+//				view.getRes().sendRedirect(ConstantsUtility.SITE);
+
 				sv.forwardTo(ConstantsUtility.SITE);
 			}catch (IOException | ServletException e) {
 				e.printStackTrace();

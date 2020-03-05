@@ -25,12 +25,12 @@ public class RedirectAction implements Action {
 		String target = view.getTarget();
 		try {
 			if (target != null) {
-//				view.getRes().sendRedirect(target);
+				//view.getRes().sendRedirect(target);
 //				view.getReq().getRequestDispatcher(target).forward(view.getReq(), view.getRes());
 				sv.forwardTo(target);
 				return;
 			} else {
-//				view.getRes().sendRedirect(ConstantsUtility.ERROR_PAGE);
+			//	view.getRes().sendRedirect(ConstantsUtility.ERROR_PAGE);
 //				view.getReq().getRequestDispatcher(ConstantsUtility.ERROR_PAGE).forward(view.getReq(), view.getRes());
 				sv.forwardTo(ConstantsUtility.ERROR_PAGE);
 				return;

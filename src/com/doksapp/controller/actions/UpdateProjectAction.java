@@ -43,6 +43,8 @@ public class UpdateProjectAction implements Action{
 		}
 		
 		try {
+//			view.getRes().sendRedirect(ConstantsUtility.SITE);
+
 			sv.forwardTo(ConstantsUtility.SITE_PROJECTS);
 		} catch (ServletException | IOException e) {
 			e.printStackTrace();

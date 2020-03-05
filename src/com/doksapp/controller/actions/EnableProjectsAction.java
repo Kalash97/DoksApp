@@ -25,6 +25,8 @@ public class EnableProjectsAction implements Action{
 		sv.getReq().setAttribute("projectsEnable", true);
 		ServletViewUtility svu = new ServletViewUtility(sv);
 		try {
+//			sv.getRes().sendRedirect(ConstantsUtility.SITE);
+
 			svu.forwardTo(ConstantsUtility.SITE);
 		} catch (ServletException | IOException e) {
 			e.printStackTrace();

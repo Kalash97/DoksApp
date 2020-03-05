@@ -110,6 +110,8 @@ public class HibernatePersistanceManager implements PersistanceManager {
 		Persistable persistable = (Persistable) em.find(type, id);
 		em.remove(persistable);
 		// dobre miejsce na loggera
+//		em.flush();
+//		em.clear();
 		em.getTransaction().commit();
 		em.close();
 	}
@@ -214,6 +216,48 @@ public class HibernatePersistanceManager implements PersistanceManager {
 		em.getTransaction().commit();
 		em.close();
 		return project;
+	}
+
+	@Override
+	public void removeDocumentFromProject(long idProject, long idDoc) {
+		EntityManager em = HibernateConnection.getManager();
+		em.getTransaction().begin();
+		Project project = em.find(Project.class, idProject);
+		for(int i=0; i<project.getDocuments().size(); i++) {
+			if(project.getDocuments().get(i).getId()==idDoc) {
+				project.getDocuments().remove(i);
+			}
+		}	
+		em.getTransaction().commit();
+		em.close();
+	}
+
+	@Override
+	public void removeProjectFromUser(long idPerson, long idProject) {
+		EntityManager em = HibernateConnection.getManager();
+		em.getTransaction().begin();
+		Person person = em.find(Person.class, idPerson);
+		for(int i=0; i<person.getProjects().size(); i++) {
+			if(person.getProjects().get(i).getId()==idProject) {
+				person.getProjects().remove(i);
+			}
+		}
+		em.getTransaction().commit();
+		em.close();
+	}
+
+	@Override
+	public void removeDocumentFromUser(long idPerson, long idDoc) {
+		EntityManager em = HibernateConnection.getManager();
+		em.getTransaction().begin();
+		Person person = em.find(Person.class, idPerson);
+		for(int i=0; i<person.getDocuments().size(); i++) {
+			if(person.getDocuments().get(i).getId()==idDoc) {
+				person.getDocuments().remove(i);
+			}
+		}
+		em.getTransaction().commit();
+		em.close();
 	}
 
 	

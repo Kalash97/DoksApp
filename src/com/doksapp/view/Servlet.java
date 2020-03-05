@@ -36,6 +36,9 @@ import com.doksapp.controller.actions.LoginAction;
 import com.doksapp.controller.actions.LogoutAction;
 import com.doksapp.controller.actions.RedirectAction;
 import com.doksapp.controller.actions.RegisterAction;
+import com.doksapp.controller.actions.RemoveDocumentFromProjectAction;
+import com.doksapp.controller.actions.RemoveDocumentFromUserAction;
+import com.doksapp.controller.actions.RemoveProjectFromUserAction;
 import com.doksapp.controller.actions.UpdateDocumentAction;
 import com.doksapp.controller.actions.UpdateProjectAction;
 import com.doksapp.model.HibernatePersistanceManager;
@@ -115,7 +118,13 @@ public class Servlet extends HttpServlet {
 		FindDocumentsOfUserAction fdou = new FindDocumentsOfUserAction(sv,dRep);
 		EnableProjectsAction epa = new EnableProjectsAction(sv);
 		EnableDocumentsAction eda = new EnableDocumentsAction(sv);
+		RemoveDocumentFromProjectAction rdfp = new RemoveDocumentFromProjectAction(sv, pr);
+		RemoveProjectFromUserAction rpfu = new RemoveProjectFromUserAction(sv, pRep);
+		RemoveDocumentFromUserAction rdfu = new RemoveDocumentFromUserAction(sv, pRep);
 		
+		actions.add(rdfu);
+		actions.add(rpfu);
+		actions.add(rdfp);
 		actions.add(eda);
 		actions.add(epa);
 		actions.add(fdou);

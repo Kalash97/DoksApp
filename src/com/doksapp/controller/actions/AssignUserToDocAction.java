@@ -30,6 +30,7 @@ public class AssignUserToDocAction implements Action{
 		long idDoc = Long.parseLong(view.getName());
 		repo.assignDocumentToUser(idPerson, idDoc);
 		try {
+//			view.getRes().sendRedirect(ConstantsUtility.SITE);
 			sv.forwardTo(ConstantsUtility.SITE);
 		} catch (ServletException | IOException e) {
 			e.printStackTrace();

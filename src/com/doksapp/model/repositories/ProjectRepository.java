@@ -64,4 +64,8 @@ public class ProjectRepository {
 	public Project assignDocumentToProject(long idProject, long idDoc) {
 		return pm.assignDocumentToProject(idProject, idDoc);
 	}
+
+	public void removeDocumentFromProject(long idProject, long idDoc) {
+		pm.removeDocumentFromProject(idProject, idDoc);
+	}
 }

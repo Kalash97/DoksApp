@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
+import com.doksapp.controller.utils.ConstantsUtility;
 import com.doksapp.controller.utils.SessionManager;
 import com.doksapp.model.entities.AccountType;
 import com.doksapp.view.ServletView;
@@ -23,7 +24,7 @@ public class LogoutAction implements Action {
 		SessionManager sm = new SessionManager(view.getReq());
 		sm.destroyCutrrentSession();
 		try {
-			view.getRes().sendRedirect("Login.jsp");
+			view.getRes().sendRedirect(ConstantsUtility.LOGIN);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

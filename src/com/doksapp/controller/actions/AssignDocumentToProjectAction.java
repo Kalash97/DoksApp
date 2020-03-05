@@ -27,10 +27,11 @@ public class AssignDocumentToProjectAction implements Action {
 	public void launch() {
 		ServletViewUtility sv = new ServletViewUtility(view);
 		long idProject = Long.parseLong(view.getId());
-		long idDoc = Long.parseLong(view.getName());
+		long idDoc = Long.parseLong(view.getName());//to refactor
 
 		repo.assignDocumentToProject(idProject, idDoc);
 		try {
+//			view.getRes().sendRedirect(ConstantsUtility.SITE);
 			sv.forwardTo(ConstantsUtility.SITE);
 		} catch (ServletException | IOException e) {
 			e.printStackTrace();

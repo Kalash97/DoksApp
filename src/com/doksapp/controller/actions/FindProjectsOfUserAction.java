@@ -42,6 +42,8 @@ public class FindProjectsOfUserAction implements Action {
 				
 
 //				view.getRes().sendRedirect("ErrorPage.html");
+//				view.getRes().sendRedirect(ConstantsUtility.ERROR_PAGE);
+
 				sv.forwardTo(ConstantsUtility.ERROR_PAGE);
 			} catch (IOException | ServletException e) {
 				e.printStackTrace();
@@ -59,6 +61,8 @@ public class FindProjectsOfUserAction implements Action {
 			view.getReq().setAttribute("projects444", list);
 			try {
 //				view.getRes().sendRedirect("Site.jsp");
+//				view.getRes().sendRedirect(ConstantsUtility.SITE_PROJECTS);
+
 				sv.forwardTo(ConstantsUtility.SITE_PROJECTS);
 			} catch (IOException | ServletException e) {
 				e.printStackTrace();

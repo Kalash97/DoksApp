@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -51,6 +52,6 @@ public class Person implements Serializable, Persistable {
 	List<Document> documents = new ArrayList<Document>();
 
 	@Getter
-	@ManyToMany //(mappedBy = "persons")
+	@ManyToMany//(mappedBy = "persons")
 	List<Project> projects = new ArrayList<Project>();
 }

@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.ServletException;
 
+import com.doksapp.controller.utils.ConstantsUtility;
 import com.doksapp.model.entities.AccountType;
 import com.doksapp.model.entities.Persistable;
 import com.doksapp.model.repositories.DocumentRepository;
@@ -29,9 +30,9 @@ public class FindAllDocsAction implements Action {
 
 		try {
 			view.getReq().getRequestDispatcher("Site.jsp").forward(view.getReq(), view.getRes());
-		} catch (ServletException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
+//			view.getRes().sendRedirect(ConstantsUtility.SITE);
+
+		} catch (ServletException | IOException e) {
 			e.printStackTrace();
 		}
 

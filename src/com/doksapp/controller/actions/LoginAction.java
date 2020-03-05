@@ -44,6 +44,7 @@ public class LoginAction implements Action {
 
 			testSession();
 			try {
+//				view.getRes().sendRedirect(ConstantsUtility.SITE);
 				sv.forwardTo(ConstantsUtility.SITE);
 				return;
 			} catch (ServletException | IOException e) {
@@ -52,6 +53,8 @@ public class LoginAction implements Action {
 		} else {
 			try {
 				view.getReq().setAttribute("failed", true);
+//				view.getRes().sendRedirect(ConstantsUtility.LOGIN);
+
 				sv.forwardTo(ConstantsUtility.LOGIN);
 				return;
 			} catch (ServletException | IOException e) {

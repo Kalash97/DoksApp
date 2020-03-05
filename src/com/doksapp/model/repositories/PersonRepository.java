@@ -46,4 +46,12 @@ public class PersonRepository {
 	public Person assignProjectToUser(long idPerson, long idProject) {
 		return pm.assignProjectToUser(idPerson, idProject);
 	}
+
+	public void removeProjectFromUser(long idPerson, long idProject) {
+		pm.removeProjectFromUser(idPerson, idProject);
+	}
+
+	public void removeDocumentFromUser(long idPerson, long idDoc) {
+		pm.removeDocumentFromUser(idPerson, idDoc);
+	}
 }

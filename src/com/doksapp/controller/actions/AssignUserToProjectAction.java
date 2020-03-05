@@ -30,6 +30,8 @@ public class AssignUserToProjectAction implements Action{
 		long idProject = Long.parseLong(view.getName());
 		repo.assignProjectToUser(idPerson, idProject);
 		try {
+//			view.getRes().sendRedirect(ConstantsUtility.SITE);
+
 			sv.forwardTo(ConstantsUtility.SITE);
 		} catch (ServletException | IOException e) {
 			e.printStackTrace();

@@ -31,6 +31,8 @@ public class DeleteProjectAction implements Action{
 		repo.deleteProject(id);
 		
 		try {
+//			view.getRes().sendRedirect(ConstantsUtility.SITE);
+
 			sv.forwardTo(ConstantsUtility.SITE);
 		} catch (ServletException | IOException e) {
 			e.printStackTrace();

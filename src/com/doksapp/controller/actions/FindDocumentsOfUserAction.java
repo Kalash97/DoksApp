@@ -42,6 +42,8 @@ public class FindDocumentsOfUserAction implements Action{
 
 //			view.getRes().sendRedirect("ErrorPage.html");
 			try {
+//				view.getRes().sendRedirect(ConstantsUtility.ERROR_PAGE);
+
 				sv.forwardTo(ConstantsUtility.ERROR_PAGE);
 			} catch (ServletException | IOException e) {
 				e.printStackTrace();
@@ -59,6 +61,8 @@ public class FindDocumentsOfUserAction implements Action{
 			view.getReq().setAttribute("document444", list);
 			try {
 //				view.getRes().sendRedirect("Site.jsp");
+//				view.getRes().sendRedirect(ConstantsUtility.SITE_DOCUMENTS);
+
 				sv.forwardTo(ConstantsUtility.SITE_DOCUMENTS);
 			} catch (IOException | ServletException e) {
 				e.printStackTrace();
