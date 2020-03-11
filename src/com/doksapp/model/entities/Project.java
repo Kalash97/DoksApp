@@ -34,12 +34,13 @@ public class Project implements Serializable, Persistable {
 	@Setter
 	private String description;
 	
-	@OneToMany
+	@OneToMany(mappedBy = "project")
 	@Getter
 	List<Document> documents = new ArrayList<Document>();
 	
-//	@ManyToMany
-//	@Getter
-//	List<Person> persons = new ArrayList<Person>();
+	@ManyToMany
+	@JoinTable(name="project_person", joinColumns = @JoinColumn(name="id_Project"), inverseJoinColumns = @JoinColumn(name="id_Person"))
+	@Getter
+	List<Person> persons = new ArrayList<Person>();
 	
 }

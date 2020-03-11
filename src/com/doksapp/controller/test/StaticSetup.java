@@ -20,9 +20,9 @@ public class StaticSetup {
 	public static void main(String[] args) {
 //		createAdmin();
 //		createTestData();
-		//createManager();
-		//createWorker();
-		//createDoc();
+//		createManager();
+//		createWorker();
+//		createDoc();
 		//test();
 	}
 	

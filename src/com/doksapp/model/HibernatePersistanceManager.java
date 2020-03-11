@@ -228,6 +228,7 @@ public class HibernatePersistanceManager implements PersistanceManager {
 		Person person = em.find(Person.class, idPerson);
 		Project project = em.find(Project.class, idProject);
 		person.getProjects().add(project);
+		project.getPersons().add(person);
 		// System.out.println("Przed commit: "+person.getProjects().size());
 		em.getTransaction().commit();
 		// System.out.println("Po commit: "+person.getProjects().size());
@@ -243,6 +244,7 @@ public class HibernatePersistanceManager implements PersistanceManager {
 		Person person = em.find(Person.class, idPerson);
 		Document document = em.find(Document.class, idDoc);
 		person.getDocuments().add(document);
+		document.getPersons().add(person);
 		em.getTransaction().commit();
 		em.close();
 		return person;
@@ -255,6 +257,7 @@ public class HibernatePersistanceManager implements PersistanceManager {
 		Project project = em.find(Project.class, idProject);
 		Document document = em.find(Document.class, idDoc);
 		project.getDocuments().add(document);
+		document.setProject(project);
 		em.getTransaction().commit();
 		em.close();
 		return project;

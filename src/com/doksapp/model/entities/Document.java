@@ -8,7 +8,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -31,7 +34,14 @@ public class Document implements Serializable, Persistable {
 	@Setter
 	private String content;
 	
-//	@ManyToMany
-//	List<Person> persons = new ArrayList<Person>();
+	@ManyToMany
+	@JoinTable(name="document_person", joinColumns = @JoinColumn(name="id_Document"), inverseJoinColumns = @JoinColumn(name="id_Person"))
+	@Getter
+	List<Person> persons = new ArrayList<Person>();
+	
+	@ManyToOne
+	@Getter
+	@Setter
+	private Project project;
 
 }

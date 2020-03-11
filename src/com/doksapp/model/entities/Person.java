@@ -48,10 +48,10 @@ public class Person implements Serializable, Persistable {
 	AccountType accountType;
 
 	@Getter
-	@ManyToMany //(mappedBy = "persons")
+	@ManyToMany(mappedBy = "persons")
 	List<Document> documents = new ArrayList<Document>();
 
 	@Getter
-	@ManyToMany//(mappedBy = "persons")
+	@ManyToMany(mappedBy = "persons")
 	List<Project> projects = new ArrayList<Project>();
 }
