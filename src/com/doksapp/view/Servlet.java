@@ -30,6 +30,7 @@ import com.doksapp.controller.actions.FindAllProjectsAction;
 import com.doksapp.controller.actions.FindDocByIdAction;
 import com.doksapp.controller.actions.FindDocumentsOfProjectAction;
 import com.doksapp.controller.actions.FindDocumentsOfUserAction;
+import com.doksapp.controller.actions.FindOrphanedProjectsAction;
 import com.doksapp.controller.actions.FindProjectByIdAction;
 import com.doksapp.controller.actions.FindProjectsOfUserAction;
 import com.doksapp.controller.actions.LoginAction;
@@ -39,6 +40,7 @@ import com.doksapp.controller.actions.RegisterAction;
 import com.doksapp.controller.actions.RemoveDocumentFromProjectAction;
 import com.doksapp.controller.actions.RemoveDocumentFromUserAction;
 import com.doksapp.controller.actions.RemoveProjectFromUserAction;
+import com.doksapp.controller.actions.SafeDeleteOfProjectAction;
 import com.doksapp.controller.actions.UpdateDocumentAction;
 import com.doksapp.controller.actions.UpdateProjectAction;
 import com.doksapp.model.HibernatePersistanceManager;
@@ -121,7 +123,11 @@ public class Servlet extends HttpServlet {
 		RemoveDocumentFromProjectAction rdfp = new RemoveDocumentFromProjectAction(sv, pr);
 		RemoveProjectFromUserAction rpfu = new RemoveProjectFromUserAction(sv, pRep);
 		RemoveDocumentFromUserAction rdfu = new RemoveDocumentFromUserAction(sv, pRep);
+		SafeDeleteOfProjectAction sdop = new SafeDeleteOfProjectAction(sv, pr, pRep);
+		FindOrphanedProjectsAction fop = new FindOrphanedProjectsAction(pr);
 		
+		actions.add(fop);
+		actions.add(sdop);
 		actions.add(rdfu);
 		actions.add(rpfu);
 		actions.add(rdfp);

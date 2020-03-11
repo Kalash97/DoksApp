@@ -2,6 +2,8 @@ package com.doksapp.model.repositories;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import com.doksapp.model.OperationType;
 import com.doksapp.model.PersistanceManager;
 import com.doksapp.model.QuerySpec;
@@ -33,8 +35,21 @@ public class ProjectRepository {
 		return (Project) pm.create(project);
 	}
 
+	public void deleteProjectOb(Project project) {
+		Persistable p =(Persistable) project;
+		pm.deleteSafe(p);
+	}
+	
+	public void deleteProjectByObject(Project project) {
+		pm.deleteProject(project);
+	}
+	
 	public void deleteProject(long id) {
 		pm.delete(id, Project.class);
+	}
+	
+	public void deleteProjectSafe(Persistable p) {
+		pm.deleteSafe(p);
 	}
 
 	public List<Persistable> readAllProjects() {
@@ -67,5 +82,19 @@ public class ProjectRepository {
 
 	public void removeDocumentFromProject(long idProject, long idDoc) {
 		pm.removeDocumentFromProject(idProject, idDoc);
+	}
+
+	public void safeDeleteOfProject(String id) {
+		QuerySpec qs = new QuerySpec(Person.class);
+		qs.addToList(new SearchCondition(Project.class, "id", OperationType.EQUALS, id));
+		qs.addToList(new SearchCondition(Project.class, OperationType.MEMBEROF, Person.class, "projects"));
+		List<Persistable> resultList = pm.read(qs);
+		pm.safeDeleteOfProject(id, resultList);
+	}
+	
+	public List<Persistable> findOrphanedProjects(){
+		QuerySpec qs = new QuerySpec(Project.class);
+		qs.addToList(new SearchCondition(Project.class, true, OperationType.MEMBEROF, Person.class, "projects"));
+		return pm.read(qs);
 	}
 }

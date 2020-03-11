@@ -39,4 +39,12 @@ public interface PersistanceManager {
 
 	public void removeDocumentFromUser(long idPerson, long idDoc);
 
+	public void safeDeleteOfProject(String id, List<Persistable> resultList);
+
+	public void deleteSafe(Persistable p);
+	
+	public void deleteProject(Project project);
+	
+	public Persistable updateEntity(Persistable p);
+
 }

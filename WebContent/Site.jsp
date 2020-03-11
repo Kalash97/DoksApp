@@ -43,7 +43,66 @@
 		<div class="content">
 			Temporary content <br>	<br>
 				
+				<form action="traffic?action=SafeDeleteOfProject" method="get">
+					SafeDeleteOfProject<br>
+					<input type="hidden" name="action" value="SafeDeleteOfProject"/>
+					Project id
+					<input type="text" name="id"/><br>
+					<input type="submit" value="Delete"/>
+				</form>
+				
+				<br>
+				<a href="traffic?action=FindAllProjects">Find all projects</a>
+				<!--<c:if test="${fn:length(projects555) gt 0}">-->
+					<table border="1">
+						<thead>
+							<tr>
+								<th>id</th>
+								<th>name</th>
+								<th>description</th>
+								<th>delete</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach items="${projects555}" var="d55">
+								<tr>
+									<td>${d55.id}</td>
+									<td>${d55.name}</td>
+									<td>${d55.description}</td>
+									<td><a
+										href="<c:url value = "traffic?action=DeleteProject&id=${d55.id}"/>"><i class="fas fa-trash-alt"></i></a></td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+			<!--  	</c:if>-->
+				
 			<br>
+			
+			<a href="traffic?action=FindProjectsOfUser" class="buttonBig">Find projects of user </a> <br><br>
+			<!--<c:if test="${fn:length(projects444) gt 0}">-->
+					<table border="1">
+						<thead>
+							<tr>
+								<th>id</th>
+								<th>name</th>
+								<th>description</th>
+								<th>delete</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach items="${projects444}" var="p44">
+								<tr>
+									<td>${p44.id}</td>
+									<td>${p44.name}</td>
+									<td>${p44.description}</td>
+									<td><a href="<c:url value = "traffic?action=DeleteProject&id=${p44.id}"/>"><i class="fas fa-trash-alt"></i></a></td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				<!-- 	</c:if> -->
+			
 			<br>
 			<form action="traffic?action=RemoveDocumentFromProject" method="get">
 				RemoveDocFromProject<br>

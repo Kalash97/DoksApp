@@ -18,6 +18,14 @@ public class SearchCondition {
 		this.fieldOfSecond = fieldOfSecond;
 	}
 	
+	public SearchCondition(Class<?> entityType, boolean isNot, OperationType type, Class<?> entityTypeSecond, String fieldOfSecond) {
+		this.entityType = entityType;
+		this.isNot=isNot;
+		this.type = type;
+		this.entityTypeSecond = entityTypeSecond;
+		this.fieldOfSecond = fieldOfSecond;
+	}
+	
 	@Getter
 	private Class<?> entityType;
 	
@@ -35,5 +43,8 @@ public class SearchCondition {
 	
 	@Getter
 	private String fieldOfSecond;
+	
+	@Getter
+	private boolean isNot;
 	
 }

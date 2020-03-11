@@ -12,10 +12,14 @@ import com.doksapp.model.entities.Project;
 
 import lombok.AllArgsConstructor;
 
-@AllArgsConstructor
-public class PersonRepository {
+//@AllArgsConstructor
+public class PersonRepository extends GenericRepository{
 
-	private PersistanceManager pm;
+	public PersonRepository(PersistanceManager pm) {
+		super(pm);
+	}
+
+	//private PersistanceManager pm;
 
 	public Person createUser(Person person) {	
 		return (Person) pm.create(person);
@@ -54,4 +58,15 @@ public class PersonRepository {
 	public void removeDocumentFromUser(long idPerson, long idDoc) {
 		pm.removeDocumentFromUser(idPerson, idDoc);
 	}
+
+	public List<Persistable> findUsersHavingProject(String idProject) {
+		QuerySpec qs = new QuerySpec(Person.class);
+		qs.addToList(new SearchCondition(Project.class, "id", OperationType.EQUALS, idProject));
+		qs.addToList(new SearchCondition(Project.class, OperationType.MEMBEROF, Person.class, "projects"));
+		List<Persistable> resultList = pm.read(qs);		
+		return resultList;
+	}
+	
+	//public List<Persistable> find
+	
 }

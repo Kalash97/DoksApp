@@ -1,12 +1,15 @@
 package com.doksapp.model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
+import javax.transaction.Transactional;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -108,10 +111,37 @@ public class HibernatePersistanceManager implements PersistanceManager {
 		EntityManager em = HibernateConnection.getManager();
 		em.getTransaction().begin();
 		Persistable persistable = (Persistable) em.find(type, id);
+		System.out.println("Persistable: "+persistable);
 		em.remove(persistable);
 		// dobre miejsce na loggera
 //		em.flush();
 //		em.clear();
+		em.getTransaction().commit();
+		em.close();
+	}
+	
+	public void deleteSafe(Persistable project) {
+		EntityManager em = HibernateConnection.getManager();
+		em.getTransaction().begin();
+		//Persistable persistable = (Persistable) em.find(type, id);
+		//em.merge(project);
+		
+		System.out.println(project);
+		//em.remove(project); //to by³o
+		em.remove(em.merge(project));
+		// dobre miejsce na loggera
+//		em.flush();
+//		em.clear();
+		em.getTransaction().commit();
+		em.close();
+	}
+	
+	@Override
+	public void deleteProject(Project project) {
+		EntityManager em = HibernateConnection.getManager();
+		em.getTransaction().begin();
+		System.out.println("In HPM: "+project);
+		em.remove(project);
 		em.getTransaction().commit();
 		em.close();
 	}
@@ -130,6 +160,9 @@ public class HibernatePersistanceManager implements PersistanceManager {
 		tablesX.add(qs.getResultType().getSimpleName());
 		for (SearchCondition sc : qs.getSearchConditions()) {
 			tablesX.add(sc.getEntityType().getSimpleName());
+			if(sc.getEntityTypeSecond()!=null) {
+				tablesX.add(sc.getEntityTypeSecond().getSimpleName());
+			}
 		}
 
 		Iterator<String> iteratorTablesX = tablesX.iterator();
@@ -149,9 +182,14 @@ public class HibernatePersistanceManager implements PersistanceManager {
 			while (iterator.hasNext()) {
 				SearchCondition next = iterator.next();
 
+				
+				
 				if (next.getType() == OperationType.MEMBEROF) {
 
 					conditions += next.getEntityType().getSimpleName().substring(0, 2);
+					if(next.isNot()) {
+						conditions += " NOT ";
+					}
 					conditions +=" " + next.getType().getValue()+" ";
 					conditions += next.getEntityTypeSecond().getSimpleName().substring(0, 2)+".";
 					conditions += next.getFieldOfSecond();
@@ -160,6 +198,9 @@ public class HibernatePersistanceManager implements PersistanceManager {
 
 					conditions += next.getEntityType().getSimpleName().substring(0, 2);
 					conditions += "." + next.getEntityField();
+					if(next.isNot()) {
+						conditions += " NOT ";
+					}
 					conditions += next.getType().getValue();
 					conditions += "'" + next.getArgument() + "'";
 
@@ -172,6 +213,7 @@ public class HibernatePersistanceManager implements PersistanceManager {
 		}
 
 		String hql = prefix + tables + conditions;
+		System.out.println("Read query to be executed: "+hql);
 		logger.info("Read query to be executed: "+hql);
 
 		TypedQuery<?> query = em.createQuery(hql, qs.getResultType());
@@ -259,6 +301,57 @@ public class HibernatePersistanceManager implements PersistanceManager {
 		em.getTransaction().commit();
 		em.close();
 	}
+
+	@Override
+	public void safeDeleteOfProject(String id, List<Persistable> resultList) {
+		EntityManager em = HibernateConnection.getManager();
+		em.getTransaction().begin();
+		long idProject = Long.parseLong(id);
+	
+		List<Person> persons = resultList.stream().map(p->(Person)p).collect(Collectors.toList());
+//		for(int i=0; i<persons.size(); i++) {
+//			persons.get(i).getProjects().remove(project);
+//			
+//			
+//			System.out.println(Arrays.toString(persons.get(i).getProjects().toArray()));
+//		}
+		
+		for(Person p : persons) {
+			for(Project pr : p.getProjects()) {
+				if(pr.getId()==idProject) {
+					p.getProjects().remove(pr);
+				}
+				break;
+			}
+		}
+		
+		System.out.println(persons);
+		
+		Project project = em.find(Project.class, idProject);
+		
+		if(project.getDocuments().size()>0) {	
+			for(int j=0; j<project.getDocuments().size(); j++) {
+				project.getDocuments().remove(j);
+			}
+		}
+		
+		System.out.println(project.getDocuments());
+		em.remove(project);
+		em.getTransaction().commit();
+		em.close();
+	}
+
+	@Override
+	public Persistable updateEntity(Persistable p) {
+		EntityManager em = HibernateConnection.getManager();
+		em.getTransaction().begin();
+		em.refresh(em.merge(p));
+		em.getTransaction().commit();
+		em.close();
+		return p;
+	}
+
+	
 
 	
 }
